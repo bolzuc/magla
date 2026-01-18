@@ -25,11 +25,34 @@
     <!-- NUESTRO CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar-footer.css">
+    
+    <style>
+        /* CSS ESPECIAL PARA RESERVAS (TEXTO VINO POR DEFECTO) */
+        /* Forzamos que los enlaces del navbar sean VINO al inicio porque el fondo es beige */
+        #main-header:not(.scrolled) .nav-link {
+            color: #6A1B1F !important; /* Color Vino */
+            text-shadow: none !important;
+        }
+        #main-header:not(.scrolled) .nav-link:hover,
+        #main-header:not(.scrolled) .nav-link.active {
+            color: #8a2b30 !important;
+        }
+        #main-header:not(.scrolled) .nav-link.active::after {
+            background-color: #6A1B1F !important;
+        }
+        #main-header:not(.scrolled) .social-nav-link {
+            color: #6A1B1F !important;
+        }
+        #main-header:not(.scrolled) #mobile-menu-btn {
+            color: #6A1B1F !important;
+        }
+    </style>
 </head>
 <body class="antialiased bg-beige-section">
 
     <!-- Navbar Completo -->
-    <header id="main-header" class="fixed w-full top-0 z-50 always-white">
+    <!-- NOTA: Quitamos 'text-white' aquí y dejamos que el CSS del <head> controle el color inicial -->
+    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-32">
                 <a href="index.html" class="logo-link py-2">
@@ -41,14 +64,15 @@
                     <a href="habitaciones.html" class="nav-link">Habitaciones</a>
                     <a href="maglacafe.html" class="nav-link">Magla Café</a>
                     <a href="galeria.html" class="nav-link">Galería</a>
-                    <a href="index.html#servicios" class="nav-link">Servicios</a>
                 </nav>
 
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <!-- Icono Instagram (El color lo maneja el CSS arriba) -->
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                     <a href="index.html" class="btn-action btn-primary"><span>Volver al Inicio</span></a>
                 </div>
 
+                <!-- Botón Móvil (El color lo maneja el CSS arriba) -->
                 <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
             </div>
         </div>

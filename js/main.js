@@ -9,15 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // 2. Control del Navbar (Transición Transparente a Blanco)
+    // ==========================================
+    // 2. NAVBAR DINÁMICO (Scroll Effect)
+    // ==========================================
     const header = document.getElementById('main-header');
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     
     function updateHeader() {
-        // Si bajamos más de 50px, añadimos clase scrolled (fondo blanco)
-        // Si estamos arriba, quitamos clase (fondo transparente)
-        if (window.scrollY > 50) {
+        if (!header) return;
+        
+        // Si bajamos más de 50px O si el menú móvil está abierto
+        if (window.scrollY > 50 || (mobileMenu && !mobileMenu.classList.contains('hidden'))) {
             header.classList.add('scrolled');
             header.classList.remove('header-transparent');
         } else {
@@ -27,29 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (header) {
-        // Verificar estado inicial
-        updateHeader();
+        updateHeader(); // Estado inicial
         window.addEventListener('scroll', updateHeader);
     }
 
-    // 3. Control del Menú Móvil
+    // Toggle Menú Móvil
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            
-            // Si abrimos el menú y estamos arriba (transparente), forzamos el estilo blanco
-            // para que se lea el menú sobre el fondo blanco que añade el contenedor del menú
-            if (!mobileMenu.classList.contains('hidden') && !header.classList.contains('scrolled')) {
-                header.classList.add('scrolled'); // Truco visual para que el icono contraste
-                header.classList.remove('header-transparent');
-            } else if (window.scrollY <= 50) {
-                // Si cerramos y estamos arriba, volvemos a transparente
-                updateHeader();
-            }
+            updateHeader(); // Forzar actualización de color al abrir/cerrar
         });
     }
 
-    // 4. Scroll Suave
+    // Scroll Suave para anclas
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -57,31 +50,89 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                if (mobileMenu) mobileMenu.classList.add('hidden');
+                if (mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                    updateHeader();
+                }
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // 5. Manejo del Formulario de Reservas (AJAX)
-    const bookingForm = document.querySelector('form[action="enviar_reserva.php"]');
+    // ==========================================
+    // 3. GALERÍA FILTRABLE (Bento/Grid)
+    // ==========================================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                
+                // 1. GESTIÓN DE CLASES DE LOS BOTONES
+                filterButtons.forEach(b => {
+                    // Resetear a estilo inactivo (Gris claro)
+                    b.classList.remove('bg-wine', 'text-white', 'shadow-lg');
+                    b.classList.add('bg-gray-100', 'text-gray-700', 'hover-beige'); 
+                    // Nota: 'hover-beige' es la clase CSS personalizada que da el hover beige/vino
+                });
+
+                // Activar el botón clicado (Vino sólido)
+                btn.classList.remove('bg-gray-100', 'text-gray-700', 'hover-beige');
+                btn.classList.add('bg-wine', 'text-white', 'shadow-lg');
+
+                // 2. FILTRAR IMÁGENES
+                const filterValue = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'todo' || itemCategory === filterValue) {
+                        item.style.display = 'block'; // Usamos block/inline-block según layout
+                        // Pequeña animación
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // ==========================================
+    // 4. RESERVAS (Híbrido: PHP + WhatsApp Fallback)
+    // ==========================================
+    const bookingForm = document.querySelector('form[action="reservas.php"]');
     
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Evitar recarga de página
+            e.preventDefault(); // Detener envío tradicional
 
             const submitBtn = bookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
             
-            // Cambiar estado del botón
+            // UX: Deshabilitar botón
             submitBtn.disabled = true;
-            submitBtn.innerText = "Enviando...";
+            submitBtn.innerText = "Procesando...";
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
             // Recoger datos
             const formData = new FormData(bookingForm);
+            
+            // Preparar Datos para WhatsApp (Plan B)
+            const nombre = formData.get('nombre');
+            const fecha = formData.get('llegada');
+            const habitacion = formData.get('habitacion');
+            const waNumber = "582718811928";
+            const waMessage = `Hola Hotel Magla, quiero reservar.%0A%0A*Nombre:* ${nombre}%0A*Fecha:* ${fecha}%0A*Habitación:* ${habitacion}%0A%0AEnviado desde la web.`;
+            const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
-            // Enviar con Fetch
+            // Intentar enviar a PHP
             fetch('reservas.php', {
                 method: 'POST',
                 body: formData
@@ -89,18 +140,21 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('✅ ' + data.message);
-                    bookingForm.reset(); // Limpiar formulario
+                    alert('✅ ¡Solicitud Enviada! Te contactaremos pronto al correo/teléfono.');
+                    bookingForm.reset();
                 } else {
-                    alert('❌ Error: ' + data.message);
+                    if(confirm('⚠️ Hubo un detalle técnico enviando el correo.\n\n¿Deseas enviar tu reserva por WhatsApp ahora mismo?')) {
+                        window.open(waLink, '_blank');
+                    }
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Hubo un problema al enviar la solicitud. Por favor intenta nuevamente o contáctanos por WhatsApp.');
+                if(confirm('No pudimos conectar con el servidor de correos.\n\n¿Enviar solicitud por WhatsApp?')) {
+                    window.open(waLink, '_blank');
+                }
             })
             .finally(() => {
-                // Restaurar botón
                 submitBtn.disabled = false;
                 submitBtn.innerText = originalBtnText;
                 submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
