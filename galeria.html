@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO LOCAL -->
     <title>Galería de Fotos | Hotel Magla</title>
-    <meta name="description" content="Recorrido visual por las instalaciones del Hotel Magla: habitaciones, terraza, Magla Café y salón de eventos. La belleza de La Puerta en imágenes.">
-    <link rel="canonical" href="https://www.hotelmagla.com/galeria.html">
-    <!-- Favicon -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="img/logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,113 +13,189 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar-footer.css">
     <style>
-        .gallery-header { background-color: var(--color-wine); color: white; padding: 14rem 1rem 6rem 1rem; text-align: center; position: relative; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 0.75rem; cursor: pointer; aspect-ratio: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.15); z-index: 10; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-caption { color: white; font-weight: 600; font-size: 1.1rem; text-align: center; padding: 1rem; transform: translateY(20px); transition: transform 0.3s ease; }
-        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        /* HEADER VERTICAL OPTIMIZADO */
+        .gallery-header { 
+            background-image: url('img/fachada-desde-abajo-al-cielo-vertical.jpeg');
+            background-size: cover;
+            background-position: center 30%; 
+            color: white; 
+            padding: 16rem 1rem 8rem 1rem; 
+            text-align: center; 
+            position: relative; 
+            background-attachment: fixed;
+        }
+        .gallery-header::before {
+            content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); z-index: 1;
+        }
+        
+        /* TÍTULOS DE SECCIÓN */
+        .gallery-section-title {
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            color: #1f2937; 
+            margin: 4rem 0 2rem 0; 
+            text-align: center;
+            position: relative;
+        }
+        .gallery-section-title::after {
+            content: ''; display: block; width: 60px; height: 3px; background: var(--color-wine); margin: 10px auto 0;
+        }
+
+        /* MASONRY GRID (CORREGIDO PARA EVITAR ESPACIOS BLANCOS) */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+
+        .gallery-item {
+            break-inside: avoid; /* CRUCIAL: Evita que las imágenes se partan */
+            margin-bottom: 1.5rem; /* Espacio vertical consistente */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            background: #f3f4f6;
+            display: inline-block; /* Ayuda al cálculo de columnas */
+            width: 100%;
+        }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); z-index: 10; }
+        .gallery-item img { width: 100%; height: auto; display: block; }
+        
+        .overlay-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white; padding: 20px 15px 10px; opacity: 0; transition: opacity 0.3s;
+            font-size: 0.9rem; font-weight: 500;
+        }
+        .gallery-item:hover .overlay-caption { opacity: 1; }
     </style>
 </head>
-<body class="antialiased bg-gray-50">
+<body class="antialiased bg-gray-50 text-gray-800">
 
-    <!-- Navbar Ajustado con transparencia inicial -->
-    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent">
+    <!-- Navbar Unificado -->
+    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-32">
-                <a href="index.html" class="logo-link py-2">
-                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img">
-                </a>
+            <div class="flex justify-between items-center h-24 md:h-32">
+                <a href="index.html" class="logo-link py-2"><img src="img/logo.png" alt="MAGLA Logo" class="logo-img drop-shadow-md"></a>
                 <nav class="hidden lg:flex space-x-8 items-center">
                     <a href="index.html" class="nav-link">Inicio</a>
                     <a href="habitaciones.html" class="nav-link">Habitaciones</a>
                     <a href="maglacafe.html" class="nav-link">Magla Café</a>
                     <a href="galeria.html" class="nav-link active">Galería</a>
-                    <a href="index.html#servicios" class="nav-link">Servicios</a>
                 </nav>
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="reservas.html" class="btn-action btn-primary"><span>Reservar Hotel</span></a>
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link text-white hover:text-wine transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary shadow-md"><span>Reservar Hotel</span></a>
                 </div>
-                <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-white"><i data-lucide="menu" class="w-10 h-10"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full top-full left-0">
-            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
-                <a href="index.html" class="mobile-nav-link">Inicio</a>
-                <a href="habitaciones.html" class="mobile-nav-link">Habitaciones</a>
-                <a href="maglacafe.html" class="mobile-nav-link">Magla Café</a>
-                <a href="galeria.html" class="mobile-nav-link active">Galería</a>
-                <a href="index.html#servicios" class="mobile-nav-link">Servicios</a>
-                <a href="reservas.html" class="btn-action btn-primary w-full mt-4">Reservar Ahora</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-xl top-full left-0 border-t">
+            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-nav-link text-gray-800 text-lg">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 text-lg">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link text-gray-800 text-lg">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800 text-lg active">Galería</a>
+                <a href="reservas.html" class="btn-action btn-primary w-full mt-4 justify-center">Reservar Ahora</a>
             </div>
         </div>
     </header>
 
     <main>
         <section class="gallery-header">
-            <div class="relative z-10 px-4 animate-fade-in-up mt-8">
-                <h1 class="text-4xl md:text-6xl font-serif mb-4">Galería</h1>
-                <p class="text-xl opacity-90 max-w-2xl mx-auto">Un recorrido visual por nuestros espacios y momentos especiales.</p>
+            <div class="relative z-10 px-4 animate-fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-serif mb-4 text-shadow-xl font-bold">Nuestra Galería</h1>
+                <p class="text-xl md:text-2xl opacity-95 max-w-2xl mx-auto text-shadow-md font-light">Un paseo visual por la arquitectura y la naturaleza que nos rodea.</p>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="gallery-grid">
-                <!-- Foto Recepción -->
-                <div class="gallery-item group">
-                    <img src="img/recepcion.jpg" loading="lazy" alt="Lobby y Recepción">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Bienvenida Cálida</span>
-                    </div>
-                </div>
-                <!-- Foto Balcón -->
-                <div class="gallery-item group">
-                    <img src="img/exterior/balcon-piso1.jpg" loading="lazy" alt="Vistas desde Balcón">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Vistas de La Puerta</span>
-                    </div>
-                </div>
-                <!-- Foto Cafetín -->
-                <div class="gallery-item group">
-                    <img src="img/cafetin.jpg" loading="lazy" alt="Interior Cafetín">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Nuestro Rincón de Café</span>
-                    </div>
-                </div>
-                 <!-- Foto Terraza -->
-                 <div class="gallery-item group">
-                    <img src="img/exterior/terraza.jpg" loading="lazy" alt="Terraza">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Terraza al Aire Libre</span>
-                    </div>
-                </div>
-                <!-- Foto Salón Eventos -->
-                <div class="gallery-item group">
-                    <img src="img/eventos/sala-eventos.jpg" loading="lazy" alt="Salón de Eventos">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Salón de Eventos</span>
-                    </div>
-                </div>
-                <!-- Foto Habitación -->
-                <div class="gallery-item group">
-                    <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Suite">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Confort y Descanso</span>
-                    </div>
-                </div>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+            
+            <!-- SECCIÓN: CASA PRIVADA -->
+            <h2 class="gallery-section-title">Casa Privada & Apartamentos</h2>
+            <div class="masonry-grid">
+                <!-- Mezcla de Horizontales y Verticales para evitar gaps -->
+                <div class="gallery-item"><img src="img/casa/portada-casa-horizontal.png" loading="lazy" alt="Portada Casa"><div class="overlay-caption">Entrada Casa Privada</div></div>
+                <div class="gallery-item"><img src="img/habitación-7-personas/baño-vertical.png" loading="lazy" alt="Baño"><div class="overlay-caption">Baño Privado</div></div>
+                <div class="gallery-item"><img src="img/casa/sala-horizontal.png" loading="lazy" alt="Sala"><div class="overlay-caption">Sala de Estar</div></div>
+                <div class="gallery-item"><img src="img/casa/fachada-casa-horizontal.png" loading="lazy" alt="Fachada Casa"><div class="overlay-caption">Fachada</div></div>
+                <div class="gallery-item"><img src="img/casa/sala-cocina-horizontal.png" loading="lazy" alt="Cocina"><div class="overlay-caption">Cocina Equipada</div></div>
+                <div class="gallery-item"><img src="img/casa/quincho-cuadrada.png" loading="lazy" alt="Parrillera"><div class="overlay-caption">Área de Parrillera</div></div>
+                <div class="gallery-item"><img src="img/habitación-7-personas/habitacion-completa-horizontal.png" loading="lazy" alt="Apartamento"><div class="overlay-caption">Apartamento Completo</div></div>
+                <div class="gallery-item"><img src="img/habitación-7-personas/cama-hacia-literas-horizontal.png" loading="lazy" alt="Habitación"><div class="overlay-caption">Vista a Literas</div></div>
+                <div class="gallery-item"><img src="img/habitación-7-personas/literas-hacia-cama-horizontal.png" loading="lazy" alt="Habitación"><div class="overlay-caption">Distribución</div></div>
+                <div class="gallery-item"><img src="img/comedor-suite-especial-horizontal.png" loading="lazy" alt="Comedor"><div class="overlay-caption">Comedor Auxiliar</div></div>
             </div>
+
+            <!-- SECCIÓN: HABITACIONES -->
+            <h2 class="gallery-section-title">Habitaciones & Suites</h2>
+            <div class="masonry-grid">
+                <div class="gallery-item"><img src="img/habitacion-suite-especial-horizontal.png" loading="lazy" alt="Suite Especial"><div class="overlay-caption">Suite Especial</div></div>
+                <div class="gallery-item"><img src="img/habitación-matrimonial-sencilla/cama-vertical.png" loading="lazy" alt="Detalle Cama"><div class="overlay-caption">Confort</div></div>
+                <div class="gallery-item"><img src="img/habitación-matrimonial-sencilla/cama-horizontal.png" loading="lazy" alt="Cama Matrimonial"><div class="overlay-caption">Matrimonial</div></div>
+                <div class="gallery-item"><img src="img/habitación-matrimonial-sencilla/balcon-vertical.png" loading="lazy" alt="Balcón"><div class="overlay-caption">Balcón Privado</div></div>
+                <div class="gallery-item"><img src="img/habitación-matrimonial-sencilla/baño-vertical.png" loading="lazy" alt="Baño"><div class="overlay-caption">Baño Moderno</div></div>
+                <div class="gallery-item"><img src="img/habitación-triple/cama-triples-horizontal.png" loading="lazy" alt="Triple"><div class="overlay-caption">Triple</div></div>
+                <div class="gallery-item"><img src="img/habitación-triple/habitacion-vertical.png" loading="lazy" alt="Habitación"><div class="overlay-caption">Espacio Triple</div></div>
+                <div class="gallery-item"><img src="img/habitación-triple/baño-lavamanos-vertical.png" loading="lazy" alt="Lavamanos"><div class="overlay-caption">Lavamanos</div></div>
+                <div class="gallery-item"><img src="img/habitación-4-personas/cama-principal-horizontal.png" loading="lazy" alt="Cuádruple"><div class="overlay-caption">Cuádruple</div></div>
+                <div class="gallery-item"><img src="img/habitación-4-personas/literas-vertical.png" loading="lazy" alt="Literas"><div class="overlay-caption">Literas</div></div>
+                <div class="gallery-item"><img src="img/habitación-4-personas/regadera-wc-vertical.png" loading="lazy" alt="Ducha"><div class="overlay-caption">Ducha</div></div>
+                <div class="gallery-item"><img src="img/habitación-5-personas/habitacion-horizontal.png" loading="lazy" alt="Quíntuple"><div class="overlay-caption">Quíntuple</div></div>
+                <div class="gallery-item"><img src="img/habitación-5-personas/habitacion-completa-horizontal.png" loading="lazy" alt="Completa"><div class="overlay-caption">Vista Completa</div></div>
+                <div class="gallery-item"><img src="img/habitación-5-personas/habitacion-vertical.png" loading="lazy" alt="Vertical"><div class="overlay-caption">Perspectiva</div></div>
+                <div class="gallery-item"><img src="img/habitacion-discapacitados-horizontal.png" loading="lazy" alt="Accesible"><div class="overlay-caption">Habitación Accesible</div></div>
+                <div class="gallery-item"><img src="img/baño-discapacitados-vertical.png" loading="lazy" alt="Baño Accesible"><div class="overlay-caption">Baño Accesible</div></div>
+            </div>
+
+            <!-- SECCIÓN: EXTERIORES Y ÁREAS COMUNES -->
+            <h2 class="gallery-section-title">Exteriores, Vistas & Café</h2>
+            <div class="masonry-grid">
+                <div class="gallery-item"><img src="img/fachada-vertical.jpeg" loading="lazy" alt="Vertical"><div class="overlay-caption">Arquitectura</div></div>
+                <div class="gallery-item"><img src="img/portada-hotel-horizontal.jpeg" loading="lazy" alt="Portada"><div class="overlay-caption">Amanecer en Magla</div></div>
+                <div class="gallery-item"><img src="img/fachada-horizontal.png" loading="lazy" alt="Fachada"><div class="overlay-caption">Sede Principal</div></div>
+                <div class="gallery-item"><img src="img/fachada-solo-el-logo-vertical.jpeg" loading="lazy" alt="Logo"><div class="overlay-caption">Identidad</div></div>
+                <div class="gallery-item"><img src="img/terraza-atardeciendo-vertical.png" loading="lazy" alt="Atardecer"><div class="overlay-caption">Atardecer</div></div>
+                <div class="gallery-item"><img src="img/2da-etapa-horizontal.png" loading="lazy" alt="Los Pinos"><div class="overlay-caption">Etapa Los Pinos</div></div>
+                <div class="gallery-item"><img src="img/terraza-hotel-horizontal.png" loading="lazy" alt="Terraza"><div class="overlay-caption">Terraza</div></div>
+                <div class="gallery-item"><img src="img/terraza-amaneciendo-horizontal.png" loading="lazy" alt="Amanecer"><div class="overlay-caption">Magla Café Amanecer</div></div>
+                <div class="gallery-item"><img src="img/vistas-vertical.jpeg" loading="lazy" alt="Vistas"><div class="overlay-caption">Vistas de La Puerta</div></div>
+                <div class="gallery-item"><img src="img/terraza-anocheciendo-horizontal.png" loading="lazy" alt="Anochecer"><div class="overlay-caption">Magla Café Noche</div></div>
+                <div class="gallery-item"><img src="img/cafetin-horizontal.png" loading="lazy" alt="Interior Café"><div class="overlay-caption">Interior Café</div></div>
+                <div class="gallery-item"><img src="img/menu-cafetin.jpeg" loading="lazy" alt="Menú"><div class="overlay-caption">Nuestro Menú</div></div>
+                <div class="gallery-item"><img src="img/ruta-turistica-poster-vertical.jpeg" loading="lazy" alt="Ruta"><div class="overlay-caption">Ruta Turística</div></div>
+                <div class="gallery-item"><img src="img/vistas-mediodia-vertical.jpeg" loading="lazy" alt="Mediodía"><div class="overlay-caption">Clima de Montaña</div></div>
+                <div class="gallery-item"><img src="img/salon-eventos-horizontal.jpeg" loading="lazy" alt="Eventos"><div class="overlay-caption">Salón de Eventos</div></div>
+                <div class="gallery-item"><img src="img/salon-horizontal.png" loading="lazy" alt="Salón"><div class="overlay-caption">Salón</div></div>
+                <div class="gallery-item"><img src="img/lobby-recepcion-horizontal.png" loading="lazy" alt="Lobby"><div class="overlay-caption">Recepción</div></div>
+                <div class="gallery-item"><img src="img/pasillo-vertical.png" loading="lazy" alt="Pasillo"><div class="overlay-caption">Interiores</div></div>
+            </div>
+
         </section>
 
-        <!-- FOOTER ACTUALIZADO -->
-        <footer class="site-footer">
-            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
-                <img src="img/logo.png" alt="Hotel Magla" class="footer-logo">
-                <p class="text-gray-400 text-sm">© 2025 Hotel Magla. Todos los derechos reservados.</p>
+        <!-- FOOTER UNIFICADO -->
+        <footer class="site-footer bg-gray-900 border-t-4 border-wine pt-16 pb-8 text-white">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="h-32 mb-8 opacity-90 hover:opacity-100 transition duration-300">
+                
+                <div class="flex flex-wrap justify-center gap-8 mb-10">
+                    <a href="index.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Inicio</a>
+                    <a href="habitaciones.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Habitaciones</a>
+                    <a href="reservas.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Reservar</a>
+                    <a href="maglacafe.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Café</a>
+                </div>
+                
+                <div class="flex justify-center gap-6 mb-10">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-wine transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="https://wa.me/582718811928" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-green-600 transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+                </div>
+                
+                <div class="w-full h-px bg-gray-800 mb-6 max-w-xs mx-auto"></div>
+                <p class="text-gray-600 text-xs font-light">© 2026 Hotel Magla. Todos los derechos reservados.</p>
             </div>
         </footer>
     </main>

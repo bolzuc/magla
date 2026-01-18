@@ -3,22 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO LOCAL -->
-    <title>Habitaciones y Tarifas | Hotel MAGLA La Puerta</title>
-    <meta name="description" content="Elige tu habitación ideal en La Puerta. Suites románticas, habitaciones familiares y apartamentos equipados. Wifi, agua caliente y estacionamiento.">
-    <link rel="canonical" href="https://www.hotelmagla.com/habitaciones.html">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.hotelmagla.com/habitaciones.html">
-    <meta property="og:title" content="Habitaciones y Suites | Hotel Magla">
-    <meta property="og:description" content="Conoce nuestros espacios: Matrimoniales, Familiares y Casa Privada.">
-    <meta property="og:image" content="https://www.hotelmagla.com/img/habitaciones/habitacion-suit-especial.jpg">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <title>Habitaciones y Tarifas | Hotel MAGLA</title>
+    <meta name="description" content="Descansa en nuestras suites, habitaciones familiares o en la exclusiva casa privada. Confort en La Puerta.">
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="img/logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,252 +14,226 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar-footer.css">
     <link rel="stylesheet" href="css/habitaciones.css">
+    
+    <style>
+        /* ESTILOS PARA EL MODAL (SOLUCIÓN VERTICALES) */
+        .modal-overlay { 
+            background-color: rgba(0, 0, 0, 0.92); 
+            backdrop-filter: blur(10px); 
+        }
+        .hidden { display: none !important; }
+        .nav-btn-modal { 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            padding: 12px; 
+            transition: all 0.3s; 
+        }
+        .nav-btn-modal:hover { 
+            background: var(--color-wine); 
+            color: white; 
+            transform: scale(1.1); 
+        }
+        /* CLAVE: La imagen nunca debe exceder el alto de la pantalla, y el ancho debe ser automático */
+        #modalImage {
+            max-height: 85vh; /* Límite de altura seguro */
+            max-width: 95vw;  /* Límite de ancho seguro */
+            width: auto;      /* El ancho se ajusta solo */
+            height: auto;     /* El alto se ajusta solo */
+            object-fit: contain; /* Asegura que se vea completa */
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
-<body class="antialiased bg-white">
+<body class="antialiased bg-white text-gray-800">
 
-    <!-- Navbar -->
-    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent">
+    <!-- Navbar Unificado (CORREGIDO Z-INDEX Y ESTRUCTURA) -->
+    <header id="main-header" class="fixed w-full top-0 z-[100] header-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-32">
-                <a href="index.html" class="logo-link py-2">
-                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img">
-                </a>
+                <a href="index.html" class="logo-link py-2"><img src="img/logo.png" alt="MAGLA Logo" class="logo-img drop-shadow-md"></a>
                 <nav class="hidden lg:flex space-x-8 items-center">
                     <a href="index.html" class="nav-link">Inicio</a>
                     <a href="habitaciones.html" class="nav-link active">Habitaciones</a>
                     <a href="maglacafe.html" class="nav-link">Magla Café</a>
                     <a href="galeria.html" class="nav-link">Galería</a>
-                    <a href="index.html#servicios" class="nav-link">Servicios</a>
                 </nav>
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="reservas.html" class="btn-action btn-primary"><span>Reservar</span></a>
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link text-white hover:text-wine transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary shadow-md"><span>Reservar</span></a>
                 </div>
-                <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-white"><i data-lucide="menu" class="w-10 h-10"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-xl top-full left-0">
-            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
-                <a href="index.html" class="mobile-nav-link text-gray-800">Inicio</a>
-                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 active">Habitaciones</a>
-                <a href="maglacafe.html" class="mobile-nav-link text-gray-800">Magla Café</a>
-                <a href="galeria.html" class="mobile-nav-link text-gray-800">Galería</a>
-                <a href="reservas.html" class="btn-action btn-primary w-full mt-4">Reservar Ahora</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-xl top-full left-0 border-t">
+            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-nav-link text-gray-800 text-lg">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 text-lg active">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link text-gray-800 text-lg">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800 text-lg">Galería</a>
+                <a href="reservas.html" class="btn-action btn-primary w-full mt-4 justify-center">Reservar Ahora</a>
             </div>
         </div>
     </header>
 
     <main>
+        <section class="rooms-header relative flex items-center justify-center" style="background-image: url('img/habitacion-suite-especial-horizontal.png'); min-height: 60vh;">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="relative z-20 px-4 text-center animate-fade-in-up">
+                <span class="text-white font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Descanso Absoluto</span>
+                <h1 class="text-5xl md:text-7xl font-serif mb-6 text-white text-shadow-xl font-bold">Nuestros Espacios</h1>
+                <p class="text-xl md:text-2xl opacity-95 max-w-2xl mx-auto font-light text-white text-shadow-md">Cada habitación ha sido diseñada pensando en tu paz mental.</p>
+            </div>
+        </section>
         
-        <!-- Header Sección -->
-        <section class="rooms-header">
-            <div class="relative z-20 px-4 animate-fade-in-up mt-10">
-                <h1 class="text-5xl md:text-7xl font-serif mb-4 text-shadow-md">Nuestros Espacios</h1>
-                <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-light text-shadow-sm">Confort y Distinción en La Puerta.</p>
-            </div>
-        </section>
+        <div class="gradient-connector hero-to-beige" style="height: 80px; margin-top: -80px; background: linear-gradient(to bottom, transparent 0%, var(--color-beige) 100%); position: relative; z-index: 20;"></div>
 
-        <!-- PUENTE DEGRADADO 1: REDUCIDO A 50px (Muy discreto, solo el borde) -->
-        <div class="gradient-connector hero-to-beige" style="height: 50px; margin-top: -50px; background: linear-gradient(to bottom, transparent 0%, var(--color-beige) 100%);"></div>
-
-        <!-- GESTIÓN DE UBICACIONES (Sección Beige) -->
-        <section class="py-16 bg-beige-section">
-             <div class="max-w-5xl mx-auto px-4">
-                <div class="text-center mb-10 animate-fade-in-up">
-                    <span class="text-wine font-bold tracking-widest uppercase text-xs mb-2 block">Información Importante</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-gray-800">Dos Ambientes Exclusivos</h2>
-                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Para tu comodidad, contamos con dos ubicaciones distintas según el tipo de experiencia que busques.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Opción 1: Sede Principal -->
-                    <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-sm border border-transparent hover:border-wine/20 transition-all duration-300">
-                        <div class="bg-wine/5 p-3 rounded-full text-wine shrink-0">
-                             <i data-lucide="map-pin" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-lg font-serif mb-1">Sede Principal</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Ubicada frente a la Plaza Bolívar. Ideal para estar en el centro de la actividad turística.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Opción 2: Etapa Los Pinos -->
-                    <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-sm border border-transparent hover:border-wine/20 transition-all duration-300">
-                        <div class="bg-wine/5 p-3 rounded-full text-wine shrink-0">
-                             <i data-lucide="trees" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-lg font-serif mb-1">Etapa Los Pinos</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                A solo 2 cuadras de la principal. Un refugio diseñado para mayor privacidad y silencio.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-             </div>
-        </section>
-
-        <!-- PUENTE DEGRADADO 2: Del Beige al Blanco -->
-        <div class="gradient-connector beige-to-white"></div>
-
-        <!-- CATEGORÍA 1: PAREJAS (Fondo Blanco) -->
-        <section class="pt-8 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        <!-- SECCIÓN 1: PAREJAS -->
+        <section class="py-16 max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif text-gray-800">Suites & Parejas</h2>
+                <h2 class="text-4xl font-serif text-gray-900">Suites & Parejas</h2>
                 <div class="w-24 h-1 bg-wine mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-600">Refugios íntimos donde cada detalle cuenta.</p>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8 items-stretch">
-                <!-- Matrimonial (CON ICONO DE ACCESIBILIDAD) -->
-                <div class="room-card group">
-                    <div class="room-image-container">
-                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Matrimonial">
+                <!-- Matrimonial -->
+                <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('matrimonial')">
+                        <img src="img/habitación-matrimonial-sencilla/cama-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Habitación Matrimonial">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                        </div>
                     </div>
-                    <div class="room-content">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="room-title mb-0">Matrimonial</h3>
-                            <!-- BADGE ACCESIBILIDAD -->
-                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-full flex items-center border border-blue-200" title="Habitación en Planta Baja accesible">
-                                <i data-lucide="accessibility" class="w-3 h-3 mr-1"></i> Accesible
-                            </span>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-800">Matrimonial</h3>
+                            <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">2 PAX</span>
                         </div>
-                        <span class="room-capacity">2 PERSONAS</span>
-                        <div class="room-info-box">
-                            <strong>Camas:</strong> 1 Cama Matrimonial
+                        <div class="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg mb-4 border border-gray-100">
+                            <strong>Incluye:</strong> TV Cable, Wifi, Agua Caliente. Opción planta baja accesible.
                         </div>
-                        <div class="room-features">
-                            <div><i data-lucide="bed-double"></i> 1 Cama Matrimonial</div>
-                            <div><i data-lucide="tv"></i> TV por Cable</div>
-                            <div><i data-lucide="droplets"></i> Agua Caliente</div>
-                        </div>
-                        <div class="room-btn-container">
-                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        <div class="mt-auto flex gap-3">
+                            <button onclick="openModal('matrimonial')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                            <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Suite -->
-                <div class="room-card group relative">
-                    <span class="tag-badge tag-premium">Premium</span>
-                    <div class="room-image-container">
-                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Suite">
+                <!-- Suite Matrimonial -->
+                <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col relative">
+                    <span class="absolute top-4 right-4 bg-white text-wine px-3 py-1 text-xs font-bold rounded-full shadow-md z-10 border border-wine/20">PREMIUM</span>
+                    <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('matrimonial')"> 
+                        <img src="img/habitación-matrimonial-sencilla/balcon-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Suite con Balcón">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                        </div>
                     </div>
-                    <div class="room-content">
-                        <h3 class="room-title">Suite Matrimonial</h3>
-                        <span class="room-capacity">2 PERSONAS</span>
-                        <div class="room-info-box">
-                            <strong>Camas:</strong> 1 King Size + Zona de estar
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-800">Suite Balcón</h3>
+                            <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">2 PAX</span>
                         </div>
-                        <div class="room-features">
-                            <div><i data-lucide="maximize"></i> Mayor Amplitud</div>
-                            <div><i data-lucide="sofa"></i> Zona de Estar</div>
-                            <div><i data-lucide="star"></i> Decoración Especial</div>
+                        <div class="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg mb-4 border border-gray-100">
+                            <strong>Destacado:</strong> Balcón privado con vista panorámica y mayor amplitud.
                         </div>
-                        <div class="room-btn-container">
-                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        <div class="mt-auto flex gap-3">
+                            <button onclick="openModal('matrimonial')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                            <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                         </div>
                     </div>
                 </div>
-                 
-                 <!-- Suite Especial -->
-                 <div class="room-card group relative">
-                    <span class="tag-badge tag-luxury">Lujo</span>
-                    <div class="room-image-container">
-                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Suite Lujo">
+
+                <!-- Suite Lujo -->
+                <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col relative">
+                    <span class="absolute top-4 right-4 bg-wine text-white px-3 py-1 text-xs font-bold rounded-full shadow-md z-10">LUJO</span>
+                    <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('suites')">
+                        <img src="img/habitacion-suite-especial-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Suite Especial">
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                        </div>
                     </div>
-                    <div class="room-content">
-                        <h3 class="room-title">Suite Especial</h3>
-                        <p class="room-capacity">2 PERSONAS</p>
-                        <div class="room-info-box">
-                             <strong>Detalle:</strong> Ideal Noche de Bodas
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-800">Suite Especial</h3>
+                            <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">2 PAX</span>
                         </div>
-                        <div class="room-features">
-                            <div><i data-lucide="gem"></i> Lujo Total</div>
-                            <div><i data-lucide="heart"></i> Experiencia Romántica</div>
-                            <div><i data-lucide="sun"></i> Vista Privilegiada</div>
+                        <div class="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg mb-4 border border-gray-100">
+                            <strong>Experiencia:</strong> Decoración exclusiva, ideal para noches de bodas y aniversarios.
                         </div>
-                        <div class="room-btn-container">
-                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        <div class="mt-auto flex gap-3">
+                            <button onclick="openModal('suites')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                            <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PUENTE DEGRADADO 3: Blanco a Beige -->
-        <div class="gradient-connector white-to-beige"></div>
-
-        <!-- SECCIÓN 2: FAMILIAS (Fondo Beige) -->
+        <!-- SECCIÓN 2: FAMILIAS -->
         <section class="py-16 w-full bg-beige-section relative z-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-serif text-gray-800">Familiares</h2>
-                    <p class="text-gray-600 mt-2">Espacios pensados para compartir.</p>
+                    <h2 class="text-4xl font-serif text-gray-900">Familiares</h2>
+                    <p class="text-gray-600 mt-2">Comodidad y espacio para todos.</p>
                 </div>
-
                 <div class="grid md:grid-cols-3 gap-8 items-stretch">
                     <!-- Triple -->
-                    <div class="room-card group">
-                        <div class="room-image-container">
-                            <img src="img/habitaciones/habitacion-5-personas.jpg" loading="lazy" alt="Triple">
+                    <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('triple')">
+                            <img src="img/habitación-triple/cama-triples-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Habitación Triple">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                                <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                            </div>
                         </div>
-                        <div class="room-content">
-                            <h3 class="room-title">Triple</h3>
-                            <span class="room-capacity">3 PERSONAS</span>
-                            <div class="room-info-box">
-                                <strong>Camas:</strong> 1 Matrimonial + 1 Cama Gaveta
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-xl font-serif font-bold text-gray-800">Triple</h3>
+                                <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">3 PAX</span>
                             </div>
-                            <div class="room-features">
-                                <div><i data-lucide="users"></i> Capacidad ideal</div>
-                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
-                            </div>
-                            <div class="room-btn-container">
-                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            <div class="mt-auto flex gap-3">
+                                <button onclick="openModal('triple')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                                <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                             </div>
                         </div>
                     </div>
-
                     <!-- Cuádruple -->
-                    <div class="room-card group">
-                        <div class="room-image-container">
-                             <img src="img/habitaciones/habitacion-5-personas2.jpg" loading="lazy" alt="Cuadruple">
+                    <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('cuadruple')">
+                             <img src="img/habitación-4-personas/cama-principal-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Habitación Cuádruple">
+                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                                <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                            </div>
                         </div>
-                        <div class="room-content">
-                            <h3 class="room-title">Cuádruple</h3>
-                            <span class="room-capacity">4 PERSONAS</span>
-                            <div class="room-info-box">
-                                <strong>Opción A:</strong> 1 Mat + Litera<br>
-                                <strong>Opción B:</strong> 2 Matrimoniales
+                        <div class="p-6 flex flex-col flex-grow">
+                             <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-xl font-serif font-bold text-gray-800">Cuádruple</h3>
+                                <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">4 PAX</span>
                             </div>
-                            <div class="room-features">
-                                <div><i data-lucide="layout"></i> Espacio Versátil</div>
-                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
-                            </div>
-                            <div class="room-btn-container">
-                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            <div class="mt-auto flex gap-3">
+                                <button onclick="openModal('cuadruple')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                                <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                             </div>
                         </div>
                     </div>
-
                     <!-- Quíntuple -->
-                    <div class="room-card group">
-                        <div class="room-image-container">
-                             <img src="img/habitaciones/habitacion-5-personas.jpg" loading="lazy" alt="Quintuple">
+                    <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="room-image-container cursor-pointer relative h-64 overflow-hidden" onclick="openModal('quintuple')">
+                             <img src="img/habitación-5-personas/habitacion-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Habitación Quíntuple">
+                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                                <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                            </div>
                         </div>
-                        <div class="room-content">
-                            <h3 class="room-title">Quíntuple</h3>
-                            <span class="room-capacity">5 PERSONAS</span>
-                            <div class="room-info-box">
-                                <strong>Camas:</strong> 1 Mat + 1 Litera + 1 Gaveta
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-xl font-serif font-bold text-gray-800">Quíntuple</h3>
+                                <span class="text-xs font-bold bg-gray-100 px-2 py-1 rounded text-gray-600">5 PAX</span>
                             </div>
-                            <div class="room-features">
-                                <div><i data-lucide="users"></i> Gran Capacidad</div>
-                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
-                            </div>
-                            <div class="room-btn-container">
-                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            <div class="mt-auto flex gap-3">
+                                <button onclick="openModal('quintuple')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                                <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                             </div>
                         </div>
                     </div>
@@ -280,80 +241,211 @@
             </div>
         </section>
 
-        <!-- PUENTE DEGRADADO 4: Beige a Blanco -->
-        <div class="gradient-connector beige-to-white"></div>
-
-        <!-- SECCIÓN 3: GRUPOS Y APARTAMENTOS (Fondo Blanco) -->
-        <section class="pt-8 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        <!-- SECCIÓN 3: GRUPOS -->
+        <section class="pt-16 pb-24 max-w-7xl mx-auto px-4 bg-white relative z-10">
              <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif text-gray-800">Apartamentos y Grupos</h2>
+                <h2 class="text-4xl font-serif text-gray-900">Apartamentos y Grupos</h2>
                 <div class="w-24 h-1 bg-wine mx-auto mt-4 rounded-full"></div>
             </div>
-            
             <div class="grid md:grid-cols-2 gap-8 items-stretch">
                 <!-- Apartamentos -->
-                <div class="room-card group">
-                    <div class="room-image-container h-64">
-                         <img src="img/habitaciones/comedor-suit-especial.jpg" loading="lazy" alt="Cocina">
+                <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="room-image-container h-80 cursor-pointer relative overflow-hidden" onclick="openModal('apartamento')">
+                         <img src="img/habitación-7-personas/habitacion-completa-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Apartamento Equipado">
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                        </div>
                     </div>
-                    <div class="room-content">
-                        <h3 class="room-title">Apartamentos Equipados</h3>
-                        <p class="room-capacity">6 A 7 PERSONAS</p>
-                        <div class="room-info-box">
-                             <strong>Incluye:</strong> Cocina con utensilios y Nevera Grande
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-serif font-bold text-gray-800">Apartamentos Equipados</h3>
+                            <span class="text-sm font-bold bg-gray-100 px-3 py-1 rounded text-gray-600">6-7 PAX</span>
                         </div>
-                        <div class="room-features">
-                            <div><i data-lucide="utensils"></i> Cocina con utensilios</div>
-                            <div><i data-lucide="box"></i> Nevera Grande</div>
-                            <div><i data-lucide="door-open"></i> Habitaciones separadas</div>
-                        </div>
-                        <div class="room-btn-container">
-                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        <p class="text-gray-600 mb-6">Independencia total con cocina equipada, ideal para largas estadías o grupos de amigos.</p>
+                        <div class="mt-auto flex gap-3">
+                            <button onclick="openModal('apartamento')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                            <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Casa Privada -->
-                <div class="room-card group">
-                    <div class="room-image-container h-64">
-                         <img src="img/fachada.jpg" loading="lazy" alt="Casa">
+                <div class="room-card group hover:shadow-2xl transition duration-300 bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="room-image-container h-80 cursor-pointer relative overflow-hidden" onclick="openModal('casa')">
+                         <img src="img/casa/portada-casa-horizontal.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Casa Privada Exclusiva">
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition flex items-center justify-center">
+                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-300">Ver Fotos</span>
+                        </div>
                     </div>
-                    <div class="room-content">
-                        <h3 class="room-title">La Casa Privada</h3>
-                        <p class="room-capacity">10 PERSONAS</p>
-                        <div class="room-info-box">
-                            <strong>Exclusivo:</strong> Parrillera y Estacionamiento Privado
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-serif font-bold text-gray-800">La Casa Privada</h3>
+                            <span class="text-sm font-bold bg-wine text-white px-3 py-1 rounded">10 PAX</span>
                         </div>
-                        <div class="room-features">
-                            <div><i data-lucide="flame"></i> Parrillera Privada</div>
-                            <div><i data-lucide="car"></i> Estacionamiento Propio</div>
-                            <div><i data-lucide="home"></i> Privacidad Total</div>
-                        </div>
-                        <div class="room-btn-container">
-                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                         <p class="text-gray-600 mb-6">La joya de Magla. Privacidad absoluta con parrillera, estacionamiento propio y todo lo necesario para sentirse dueño de la montaña.</p>
+                        <div class="mt-auto flex gap-3">
+                            <button onclick="openModal('casa')" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition text-sm">Ver Galería</button>
+                            <a href="reservas.html" class="flex-1 py-3 bg-wine text-white rounded-lg font-bold hover:bg-wine-light transition text-center text-sm shadow-md">Reservar</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
-                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="footer-logo">
-                <div class="footer-links mb-6">
-                    <a href="index.html">Inicio</a>
-                    <a href="habitaciones.html">Habitaciones</a>
-                    <a href="reservas.html">Contacto</a>
+        <!-- FOOTER UNIFICADO -->
+        <footer class="site-footer bg-gray-900 border-t-4 border-wine pt-16 pb-8 text-white">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="h-32 mb-8 opacity-90 hover:opacity-100 transition duration-300">
+                
+                <div class="flex flex-wrap justify-center gap-8 mb-10">
+                    <a href="index.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Inicio</a>
+                    <a href="habitaciones.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Habitaciones</a>
+                    <a href="reservas.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Reservar</a>
+                    <a href="maglacafe.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Café</a>
                 </div>
-                <p class="text-gray-400 mb-4">© 2025 Hotel Magla. Todos los derechos reservados.</p>
-                <div class="flex justify-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" class="text-gray-400 hover:text-white transition">Instagram</a>
-                    <a href="https://wa.me/582718811928" class="text-gray-400 hover:text-green-500 transition">WhatsApp</a>
+                
+                <div class="flex justify-center gap-6 mb-10">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-wine transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="https://wa.me/582718811928" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-green-600 transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
                 </div>
+                
+                <div class="w-full h-px bg-gray-800 mb-6 max-w-xs mx-auto"></div>
+                <p class="text-gray-600 text-xs font-light">© 2026 Hotel Magla. Todos los derechos reservados.</p>
             </div>
         </footer>
     </main>
+
+    <!-- MODAL / LIGHTBOX SIN CAJA NEGRA (Floating Image) -->
+    <div id="galleryModal" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center">
+        <!-- Contenedor relativo para posicionar los botones respecto a la pantalla -->
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            
+            <!-- Botón Cerrar (Fijo arriba derecha) -->
+            <button onclick="closeModal()" class="absolute top-6 right-6 z-[110] text-white/80 hover:text-white bg-black/30 hover:bg-wine rounded-full p-2 transition">
+                <i data-lucide="x" class="w-10 h-10"></i>
+            </button>
+            
+            <!-- Botón Anterior -->
+            <button onclick="prevImage()" class="absolute left-4 md:left-8 z-[110] text-white/80 hover:text-white p-4 bg-black/20 hover:bg-wine rounded-full transition">
+                <i data-lucide="chevron-left" class="w-10 h-10"></i>
+            </button>
+
+            <!-- IMAGEN FLOTANTE (Sin contenedor de fondo negro) -->
+            <img id="modalImage" src="" alt="Detalle" class="transition-opacity duration-300 select-none">
+
+            <!-- Botón Siguiente -->
+            <button onclick="nextImage()" class="absolute right-4 md:right-8 z-[110] text-white/80 hover:text-white p-4 bg-black/20 hover:bg-wine rounded-full transition">
+                <i data-lucide="chevron-right" class="w-10 h-10"></i>
+            </button>
+
+            <!-- Caption Flotante (Abajo) -->
+            <div class="absolute bottom-8 left-0 right-0 text-center z-[110] pointer-events-none">
+                <div class="inline-block bg-black/60 backdrop-blur-md px-6 py-3 rounded-full">
+                    <h3 id="modalTitle" class="text-xl font-serif text-white">Galería</h3>
+                    <p id="modalCounter" class="text-xs text-gray-300 font-bold uppercase tracking-wider mt-1">Imagen 1 de 5</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LOGICA DEL MODAL -->
+    <script>
+        const roomGalleries = {
+            'casa': [
+                { src: 'img/casa/portada-casa-horizontal.png', title: 'Fachada Principal Casa Privada' },
+                { src: 'img/casa/fachada-casa-horizontal.png', title: 'Entrada Independiente' },
+                { src: 'img/casa/sala-horizontal.png', title: 'Sala de Estar Amplia' },
+                { src: 'img/casa/sala-cocina-horizontal.png', title: 'Cocina y Comedor Equipados' },
+                { src: 'img/casa/quincho-cuadrada.png', title: 'Parrillera Privada y Patio' }
+            ],
+            'cuadruple': [
+                { src: 'img/habitación-4-personas/cama-principal-horizontal.png', title: 'Cama Principal' },
+                { src: 'img/habitación-4-personas/literas-vertical.png', title: 'Literas Cómodas' },
+                { src: 'img/habitación-4-personas/lavamanos-vertical.jpeg', title: 'Baño: Lavamanos' },
+                { src: 'img/habitación-4-personas/regadera-wc-vertical.png', title: 'Baño: Ducha con Agua Caliente' }
+            ],
+            'quintuple': [
+                { src: 'img/habitación-5-personas/habitacion-horizontal.png', title: 'Vista General Habitación' },
+                { src: 'img/habitación-5-personas/habitacion-completa-horizontal.png', title: 'Espacio para 5 Personas' },
+                { src: 'img/habitación-5-personas/litera-horizontal.png', title: 'Detalle Litera' },
+                { src: 'img/habitación-5-personas/habitacion-vertical.png', title: 'Distribución Vertical' },
+                { src: 'img/habitación-5-personas/habitacion-otroangulo-vertical.png', title: 'Ángulo Alternativo' }
+            ],
+            'apartamento': [
+                { src: 'img/habitación-7-personas/habitacion-completa-horizontal.png', title: 'Habitación Principal Apartamento' },
+                { src: 'img/habitación-7-personas/cama-hacia-literas-horizontal.png', title: 'Vista Espaciosa' },
+                { src: 'img/habitación-7-personas/literas-hacia-cama-horizontal.png', title: 'Distribución de Camas' },
+                { src: 'img/comedor-suite-especial-horizontal.png', title: 'Comedor y Cocina' }, 
+                { src: 'img/habitación-7-personas/baño-vertical.png', title: 'Baño Privado' }
+            ],
+            'matrimonial': [
+                { src: 'img/habitación-matrimonial-sencilla/cama-horizontal.png', title: 'Cama Matrimonial Confortable' },
+                { src: 'img/habitación-matrimonial-sencilla/balcon-horizontal.png', title: 'Balcón Privado con Vistas' },
+                { src: 'img/habitacion-discapacitados-horizontal.png', title: 'Opción Accesible Planta Baja' },
+                { src: 'img/habitación-matrimonial-sencilla/cama-vertical.png', title: 'Detalle Textil' },
+                { src: 'img/habitación-matrimonial-sencilla/baño-vertical.png', title: 'Baño Impecable' }
+            ],
+            'triple': [
+                { src: 'img/habitación-triple/cama-triples-horizontal.png', title: 'Camas Triples' },
+                { src: 'img/habitación-triple/cama-triples-vertical.png', title: 'Detalle de Alojamiento' },
+                { src: 'img/habitación-triple/habitacion-vertical.png', title: 'Vista de la Habitación' },
+                { src: 'img/habitación-triple/baño-lavamanos-vertical.png', title: 'Lavamanos' },
+                { src: 'img/habitación-triple/baño-regadera-vertical.png', title: 'Ducha' }
+            ],
+            'suites': [
+                { src: 'img/habitacion-suite-especial-horizontal.png', title: 'Suite Especial de Lujo' },
+                { src: 'img/habitación-matrimonial-sencilla/balcon-horizontal.png', title: 'Vista desde la Suite' },
+                { src: 'img/comedor-suite-especial-horizontal.png', title: 'Área de Estar Suite' }
+            ]
+        };
+
+        let currentGallery = [];
+        let currentIndex = 0;
+
+        function openModal(roomType) {
+            currentGallery = roomGalleries[roomType];
+            if (!currentGallery) return;
+            
+            currentIndex = 0;
+            updateModalImage();
+            document.getElementById('galleryModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Bloquear scroll fondo
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateModalImage() {
+            const imgElement = document.getElementById('modalImage');
+            const titleElement = document.getElementById('modalTitle');
+            const counterElement = document.getElementById('modalCounter');
+            
+            const item = currentGallery[currentIndex];
+            imgElement.src = item.src;
+            titleElement.textContent = item.title;
+            counterElement.textContent = `IMAGEN ${currentIndex + 1} DE ${currentGallery.length}`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            updateModalImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            updateModalImage();
+        }
+
+        // Keyboard Support
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('galleryModal').classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
