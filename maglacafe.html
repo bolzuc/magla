@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO LOCAL & META TAGS -->
+    <title>Magla Café | Desayunos y Vistas en La Puerta</title>
+    <meta name="description" content="Disfruta del mejor café y desayunos con vista panorámica en La Puerta, Trujillo. Terraza al aire libre, clima de montaña y buena atención.">
+    <meta name="keywords" content="cafe la puerta, desayunos trujillo, terraza con vista, coworking la puerta, magla cafe">
+    <link rel="canonical" href="https://www.hotelmagla.com/maglacafe.html">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Schema Markup (JSON-LD) para Restaurante -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Magla Café",
+      "image": "https://www.hotelmagla.com/img/cafetin.jpg",
+      "telephone": "+582718811928",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Páez entre calles 8 y 9, N° 69 (Terraza Hotel Magla)",
+        "addressLocality": "La Puerta",
+        "addressRegion": "Trujillo",
+        "addressCountry": "VE"
+      },
+      "servesCuisine": "Cafetería, Desayunos, Criolla",
+      "priceRange": "$"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar-footer.css">
+    <link rel="stylesheet" href="css/maglacafe.css">
+</head>
+<body class="antialiased bg-white">
+
+    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-32">
+                <a href="index.html" class="logo-link py-2">
+                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img">
+                </a>
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="habitaciones.html" class="nav-link">Habitaciones</a>
+                    <a href="maglacafe.html" class="nav-link active">Magla Café</a>
+                    <a href="galeria.html" class="nav-link">Galería</a>
+                    <a href="index.html#servicios" class="nav-link">Servicios</a>
+                </nav>
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary"><span>Reservar Hotel</span></a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full top-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
+                <a href="index.html" class="mobile-nav-link">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link active">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link">Galería</a>
+                <a href="reservas.html" class="btn-action btn-primary w-full mt-4">Reservar Hotel</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Café -->
+        <section class="cafe-hero">
+            <div class="cafe-hero-overlay"></div>
+            <img src="img/exterior/terraza2.jpg" alt="Vista Café" class="absolute inset-0 w-full h-full object-cover z-0">
+            
+            <div class="cafe-content text-center px-4 mt-16">
+                <i data-lucide="coffee" class="text-white w-12 h-12 mx-auto mb-2"></i>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4">Magla Café</h1>
+                <p class="text-xl md:text-2xl font-light italic">"El sabor de La Puerta con la mejor vista"</p>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO -->
+        <div class="gradient-connector white-to-beige" style="margin-top: 0;"></div>
+
+        <!-- Sección PRINCIPAL (Fondo Beige) -->
+        <section class="section-cafe-beige">
+            <div class="max-w-7xl mx-auto text-center animate-fade-in-up">
+                <h2 class="text-3xl font-serif text-gray-800 mb-6">Un Espacio para Relajarse</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-12 max-w-3xl mx-auto">
+                    Ubicado en la terraza superior del hotel, combinamos el aroma del café andino con una vista panorámica inigualable.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="cafe-card-white">
+                        <div class="cafe-icon-circle">
+                            <i data-lucide="croissant" class="w-8 h-8 text-wine"></i>
+                        </div>
+                        <h3 class="cafe-card-title">Desayunos</h3>
+                        <p class="cafe-card-text">Opciones continentales y criollas.</p>
+                    </div>
+
+                    <div class="cafe-card-white">
+                        <div class="cafe-icon-circle">
+                            <i data-lucide="sun" class="w-8 h-8 text-wine"></i>
+                        </div>
+                        <h3 class="cafe-card-title">Terraza</h3>
+                        <p class="cafe-card-text">Aire fresco y vistas a las montañas.</p>
+                    </div>
+
+                    <div class="cafe-card-white">
+                        <div class="cafe-icon-circle">
+                            <i data-lucide="wifi" class="w-8 h-8 text-wine"></i>
+                        </div>
+                        <h3 class="cafe-card-title">Coworking</h3>
+                        <p class="cafe-card-text">Conexión estable para trabajar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO -->
+        <div class="gradient-connector beige-to-white"></div>
+
+        <!-- Sección Galería/Info (Fondo Blanco) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="img/cafetin.jpg" loading="lazy" alt="Café Interior" class="rounded-lg shadow-md w-full h-48 object-cover">
+                    <img src="img/exterior/terraza.jpg" loading="lazy" alt="Terraza Exterior" class="rounded-lg shadow-md w-full h-48 object-cover mt-8">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-serif text-gray-800 mb-4">Abierto para Todos</h2>
+                    <p class="text-gray-600 mb-6">
+                        Ven a visitarnos y prueba nuestro chocolate caliente especial, no necesitas estar hospedado.
+                    </p>
+                    <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm border-l-4 border-l-wine">
+                        <h4 class="font-bold text-wine mb-1 flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-2"></i> Horario</h4>
+                        <p class="text-gray-600">Todos los días: 7:00 AM - 9:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Botón volver -->
+        <div class="py-12 bg-gray-50 text-center">
+            <a href="index.html" class="btn-action btn-primary shadow-lg hover:scale-105 transition-transform">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Volver al Hotel
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="footer-logo">
+                <p class="text-gray-400 text-sm">© 2025 Hotel Magla.</p>
+            </div>
+        </footer>
+    </main>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

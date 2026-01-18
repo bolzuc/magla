@@ -1,0 +1,172 @@
+/* ==========================================
+   ESTILOS ESPECÍFICOS PARA HABITACIONES
+   (Estilo Clásico Restaurado + Degradados)
+   ========================================== */
+
+/* Header Rediseñado: Estilo Hero con Imagen */
+.rooms-header {
+    position: relative;
+    /* AUMENTADO: Más altura para que la imagen se vea grande e impactante */
+    padding: 14rem 1rem 10rem 1rem; 
+    color: white;
+    text-align: center;
+    /* Fondo de imagen con efecto parallax fijo */
+    background-image: url('../img/habitaciones/habitacion-suit-especial.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.rooms-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Sombra sutil y uniforme solo para que se lean las letras blancas, sin tapar la foto */
+    background: rgba(0, 0, 0, 0.3); 
+    z-index: 1;
+}
+
+.rooms-header > div {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- TARJETA CLÁSICA --- */
+.room-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* Sombra suave y elegante para dar volumen */
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 30px -5px rgba(106, 27, 31, 0.15), 0 10px 10px -5px rgba(106, 27, 31, 0.04);
+    border-color: rgba(106, 27, 31, 0.2);
+}
+
+/* Imagen */
+.room-image-container {
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+}
+
+.room-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.room-card:hover .room-image-container img {
+    transform: scale(1.1);
+}
+
+/* Contenido */
+.room-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.room-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.room-capacity {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-wine);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Info Box (Beige suave) */
+.room-info-box {
+    background-color: var(--color-beige-light);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.room-info-box strong {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* Características */
+.room-features {
+    margin-bottom: 1.5rem;
+}
+.room-features div {
+    display: flex;
+    align-items: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.room-features i {
+    color: var(--color-wine);
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+}
+
+/* Botón */
+.room-btn-container {
+    margin-top: auto;
+}
+
+.btn-room {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border: 1px solid var(--color-wine);
+    color: var(--color-wine);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: white;
+    text-decoration: none;
+}
+
+.btn-room:hover {
+    background-color: var(--color-wine);
+    color: white;
+}
+
+/* Etiquetas */
+.tag-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+.tag-premium { background-color: #fff; color: #c2410c; border: 1px solid #ffedd5; }
+.tag-luxury { background-color: var(--color-wine); color: white; border: 1px solid rgba(255,255,255,0.2); }

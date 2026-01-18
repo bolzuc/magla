@@ -1,0 +1,287 @@
+/* ==========================================
+   ESTILOS UNIFICADOS: NAVBAR Y FOOTER
+   ========================================== */
+
+/* NAVBAR PRINCIPAL */
+#main-header {
+    transition: all 0.4s ease-in-out;
+    height: auto;
+    padding: 0.5rem 0;
+}
+
+/* --- ESTADO TRANSPARENTE (INICIAL) --- */
+.header-transparent {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.header-transparent .nav-link {
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.header-transparent .nav-link.active::after {
+    background-color: white;
+}
+
+.header-transparent #mobile-menu-btn {
+    color: white;
+}
+
+.header-transparent .btn-outline-white {
+    border-color: white;
+    color: white;
+}
+.header-transparent .btn-outline-white:hover {
+    background-color: white;
+    color: var(--color-wine);
+}
+
+/* --- ICONOS SOCIALES --- */
+.social-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+    padding: 0.5rem;
+}
+
+.header-transparent .social-nav-link {
+    background-color: transparent !important;
+    color: white;
+}
+
+.header-transparent .social-nav-link:hover {
+    background-color: transparent !important;
+    color: #e5e5e5;
+    transform: scale(1.15);
+}
+
+/* --- ESTADO SCROLLED (AL BAJAR) O SIEMPRE BLANCO (.always-white) --- */
+/* Agrupamos selectores para que .always-white tenga el mismo estilo que .scrolled por defecto */
+#main-header.scrolled,
+#main-header.always-white {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(106, 27, 31, 0.1);
+    padding: 0.25rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+#main-header.scrolled .nav-link,
+#main-header.always-white .nav-link {
+    color: #4b5563;
+    text-shadow: none;
+}
+
+#main-header.scrolled .nav-link:hover,
+#main-header.scrolled .nav-link.active,
+#main-header.always-white .nav-link:hover,
+#main-header.always-white .nav-link.active {
+    color: var(--color-wine);
+}
+
+#main-header.scrolled .nav-link.active::after,
+#main-header.always-white .nav-link.active::after {
+    background-color: var(--color-wine);
+}
+
+#main-header.scrolled #mobile-menu-btn,
+#main-header.always-white #mobile-menu-btn {
+    color: var(--color-wine);
+}
+
+#main-header.scrolled .social-nav-link,
+#main-header.always-white .social-nav-link {
+    background-color: transparent !important;
+    color: var(--color-wine);
+}
+
+#main-header.scrolled .social-nav-link:hover,
+#main-header.always-white .social-nav-link:hover {
+    background-color: transparent !important;
+    transform: scale(1.15);
+}
+
+/* ENLACES COMUNES */
+.nav-link {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+/* --- LOGO HEADER --- */
+.logo-link {
+    display: block;
+    line-height: 0;
+}
+
+.logo-img {
+    height: 90px;
+    width: auto;
+    transition: transform 0.3s ease;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    clip-path: ellipse(48% 42% at 50% 50%);
+    -webkit-clip-path: ellipse(48% 42% at 50% 50%);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* --- BOTONES --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.8rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-wine);
+    color: white;
+    box-shadow: 0 4px 12px rgba(106, 27, 31, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #8a2b30;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(106, 27, 31, 0.4);
+    color: white;
+}
+
+/* --- MENU MOVIL --- */
+#mobile-menu {
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #4b5563;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    background-color: #fff1f2;
+    color: var(--color-wine);
+}
+
+/* --- FOOTER UNIFICADO --- */
+.site-footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding-top: 4rem;
+    padding-bottom: 6rem; /* Espacio para Sticky Bar en móviles */
+    text-align: center;
+    border-top: 4px solid var(--color-wine);
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    .site-footer {
+        padding-bottom: 2rem;
+    }
+}
+
+.footer-logo {
+    height: 130px;
+    width: auto;
+    margin-bottom: 1.5rem;
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0;
+    clip-path: ellipse(48% 42% at 50% 50%);
+    -webkit-clip-path: ellipse(48% 42% at 50% 50%);
+}
+
+.footer-links a {
+    color: #d1d5db;
+    margin: 0 1rem;
+    transition: color 0.2s;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.footer-links a:hover {
+    color: var(--color-wine);
+}
+
+/* --- STICKY BOTTOM BAR (MOVIL) --- */
+.mobile-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #e5e7eb;
+}
+
+@media (min-width: 1024px) {
+    .mobile-sticky-bar {
+        display: none;
+    }
+}
+
+.sticky-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.sticky-whatsapp {
+    background-color: #f9fafb;
+    color: #25D366;
+}
+.sticky-whatsapp:hover { background-color: #f3f4f6; }
+
+.sticky-reservar {
+    background-color: var(--color-wine);
+    color: white;
+}
+.sticky-reservar:hover { background-color: #5a161a; }

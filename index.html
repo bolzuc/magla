@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO TÉCNICO & LOCAL -->
+    <title>Hotel Magla | Hotel Boutique en La Puerta, Trujillo</title>
+    <meta name="description" content="Hotel Magla: Alojamiento familiar y boutique en La Puerta. Dos ambientes exclusivos, Magla Café y salones de eventos. Reserva tu experiencia en Los Andes.">
+    <meta name="keywords" content="hotel la puerta, hospedaje trujillo, magla cafe, hotel familiar, turismo andes, eventos la puerta">
+    <link rel="canonical" href="https://www.hotelmagla.com/">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hotelmagla.com/">
+    <meta property="og:title" content="Hotel Magla | Tu Refugio en Los Andes">
+    <meta property="og:description" content="Disfruta del clima de montaña, nuestra gastronomía y el mejor descanso. Sede Principal y Etapa Los Pinos.">
+    <meta property="og:image" content="https://www.hotelmagla.com/img/fachada.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Hotel Magla",
+      "image": "https://www.hotelmagla.com/img/fachada.jpg",
+      "telephone": "+582718811928",
+      "email": "info@hotelmagla.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Páez entre calles 8 y 9",
+        "addressLocality": "La Puerta",
+        "addressRegion": "Trujillo",
+        "addressCountry": "VE"
+      },
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "4"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar-footer.css">
+
+    <style>
+        /* Estilos del Mapa - Restaurados y Limpios */
+        .map-wrapper { position: relative; width: 100%; height: 450px; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; background: white; }
+        .map-iframe { width: 100%; height: 100%; border: 0; filter: grayscale(10%); } 
+        .map-overlay-link { position: absolute; inset: 0; z-index: 20; cursor: pointer; background: transparent; }
+        
+        /* PIN PERSONALIZADO */
+        .custom-pin-container { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -100%); 
+            z-index: 30; 
+            pointer-events: none; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin-top: -20px; 
+        }
+
+        .pin-label { 
+            background-color: white; 
+            border: 2px solid var(--color-wine); 
+            color: var(--color-wine); 
+            padding: 0.5rem 1.2rem; 
+            border-radius: 0.5rem; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            white-space: nowrap; 
+            margin-bottom: 8px; 
+            font-family: 'Playfair Display', serif; 
+        }
+
+        .pin-label::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -6px; 
+            left: 50%; 
+            transform: translateX(-50%) rotate(45deg); 
+            width: 10px; 
+            height: 10px; 
+            background-color: white; 
+            border-bottom: 2px solid var(--color-wine); 
+            border-right: 2px solid var(--color-wine); 
+        }
+
+        .pin-icon-wrapper {
+            color: var(--color-wine);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+        
+        .pin-svg { 
+            width: 64px; 
+            height: 64px; 
+            fill: currentColor; 
+        }
+        
+        .pin-inner-circle { fill: white; }
+
+        @keyframes floatPin {
+            0%, 100% { transform: translate(-50%, -100%); }
+            50% { transform: translate(-50%, -110%); }
+        }
+        .custom-pin-container {
+            animation: floatPin 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <!-- Navbar -->
+    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-32"> 
+                <a href="index.html" class="logo-link py-2">
+                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img">
+                </a>
+                
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#inicio" class="nav-link active">Inicio</a>
+                    <a href="habitaciones.html" class="nav-link">Habitaciones</a>
+                    <a href="maglacafe.html" class="nav-link">Magla Café</a>
+                    <a href="galeria.html" class="nav-link">Galería</a>
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link" title="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary"><span>Reservar</span></a>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-lg top-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col text-left">
+                <a href="index.html" class="mobile-nav-link active text-gray-800">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link text-gray-800">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800">Galería</a>
+                <a href="reservas.html" class="btn-action btn-primary w-full mt-4">Reservar Ahora</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- HERO -->
+        <section id="inicio" class="relative h-[100vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <picture>
+                    <!-- <source srcset="img/fachada.webp" type="image/webp"> -->
+                    <img src="img/fachada.jpg" alt="Fachada Hotel Magla" class="w-full h-full object-cover">
+                </picture>
+                <!-- Degradado Sutil Mejorado -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            </div>
+             
+             <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto fade-in-up mt-24" style="text-shadow: 0 4px 20px rgba(0,0,0,0.8);">
+                <span class="uppercase tracking-[0.3em] text-sm md:text-base mb-4 block opacity-100 font-bold">La Puerta, Edo. Trujillo</span>
+                <h1 class="text-5xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight font-serif">Hotel MAGLA</h1>
+                <p class="text-xl md:text-3xl font-medium italic mb-12 opacity-100 max-w-3xl mx-auto">"Para sentirse como en casa"</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="habitaciones.html" class="btn-action btn-primary text-lg px-10 py-4 shadow-xl hover:shadow-2xl border-white/20 border">Ver Habitaciones</a>
+                    <!-- BOTÓN MEJORADO: Limpio, borde blanco, hover blanco con texto vino, icono añadido -->
+                    <a href="#ubicacion" class="btn-action text-lg px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#6A1B1F] transition-colors duration-300 flex items-center gap-2 shadow-lg backdrop-blur-sm">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        ¿Dónde estamos?
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/80 drop-shadow-md"><i data-lucide="chevron-down" class="w-10 h-10"></i></div>
+        </section>
+
+        <!-- CONECTOR SUAVIZADO -->
+        <div class="gradient-connector hero-to-beige" style="height: 250px; margin-top: -250px; background: linear-gradient(to bottom, transparent 0%, var(--color-beige) 100%);"></div>
+
+        <!-- SECCIÓN 2: NUESTRAS SEDES (Fondo Beige) -->
+        <section id="sedes" class="py-20 md:py-28 relative overflow-hidden bg-beige-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-wine font-semibold tracking-wide uppercase text-sm">Experiencia Magla</span>
+                    <h2 class="text-4xl md:text-5xl mt-2 text-gray-800 font-serif">Dos Ambientes, Una Calidad</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Diseñamos espacios distintos para cada tipo de viajero.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-wine hover:shadow-md transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-wine/10 p-3 rounded-full text-wine">
+                                <i data-lucide="hotel" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif text-gray-800">Sede Principal</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Situada frente a la Plaza Bolívar. Perfecta para quienes desean estar conectados con el vibrante entorno turístico y la cultura local.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-wine"></i> Recepción 24h</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-wine"></i> Acceso directo a la Plaza</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-wine hover:shadow-md transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-wine/10 p-3 rounded-full text-wine">
+                                <i data-lucide="trees" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif text-gray-800">Etapa Los Pinos</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Ubicada a solo 2 cuadras de la principal. Un refugio de mayor privacidad y silencio, ideal para el descanso profundo y familias.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-wine"></i> Mayor Privacidad</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-wine"></i> Ambiente Silencioso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="gradient-connector beige-to-white"></div>
+
+        <!-- SECCIÓN 3: TEASER HABITACIONES (Fondo Blanco) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-wine font-semibold tracking-wide uppercase text-sm">Descanso Garantizado</span>
+                    <h2 class="text-4xl md:text-5xl mt-3 mb-6 text-gray-800 font-serif">Nuestros Espacios</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">Habitaciones matrimoniales, suites, apartamentos equipados y nuestra exclusiva casa privada.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-[450px] card-hover-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Habitación" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 p-8 z-20 text-white transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            <h3 class="text-2xl font-bold mb-2">Parejas & Suites</h3>
+                            <p class="text-white/90 text-sm mb-4 opacity-0 group-hover:opacity-100 transition duration-300 delay-75">Ideales para el romance y el confort.</p>
+                            <a href="habitaciones.html" class="inline-block border-b border-white pb-1 text-sm font-medium hover:text-gray-200">Ver detalles &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-[450px] card-hover-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                        <img src="img/habitaciones/habitacion-5-personas.jpg" loading="lazy" alt="Habitación Familiar" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 p-8 z-20 text-white transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            <h3 class="text-2xl font-bold mb-2">Familias (3-5 Pax)</h3>
+                            <p class="text-white/90 text-sm mb-4 opacity-0 group-hover:opacity-100 transition duration-300 delay-75">Espacio inteligente para todos.</p>
+                            <a href="habitaciones.html" class="inline-block border-b border-white pb-1 text-sm font-medium hover:text-gray-200">Ver detalles &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-[450px] card-hover-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                        <img src="img/habitaciones/comedor-suit-especial.jpg" loading="lazy" alt="Apartamento" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 p-8 z-20 text-white transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            <h3 class="text-2xl font-bold mb-2">Grupos Grandes</h3>
+                            <p class="text-white/90 text-sm mb-4 opacity-0 group-hover:opacity-100 transition duration-300 delay-75">Apartamentos y casas equipadas.</p>
+                            <a href="habitaciones.html" class="inline-block border-b border-white pb-1 text-sm font-medium hover:text-gray-200">Ver detalles &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-12 text-center">
+                    <a href="habitaciones.html" class="btn-action btn-primary px-8 py-3 shadow-lg hover:shadow-xl transition-transform hover:scale-105">Ver Catálogo Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEASER MAGLA CAFÉ -->
+        <section id="magla-cafe" class="py-20 md:py-28 bg-fixed bg-cover bg-center relative" style="background-image: url('img/exterior/terraza2.jpg');">
+             <div class="absolute inset-0 bg-black/60"></div>
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-2xl bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/20 animate-fade-in-up">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="coffee" class="text-white w-8 h-8"></i>
+                        <h2 class="text-4xl font-bold text-white">Magla Café</h2>
+                    </div>
+                    <h3 class="text-2xl font-serif italic text-white mb-6">"Desayunos con vista panorámica"</h3>
+                    <p class="text-white/90 text-lg leading-relaxed mb-8">Ubicado en nuestra terraza superior, Magla Café ofrece una experiencia visual y gastronómica única.</p>
+                    <a href="maglacafe.html" class="btn-action bg-white text-wine hover:bg-gray-100 border-none">Visitar el Café</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="gradient-connector white-to-beige" style="margin-top:0;"></div>
+
+        <!-- SERVICIOS (Fondo Beige) -->
+        <section id="servicios" class="py-20 bg-beige-section">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-gray-800">Servicios & Comodidades</h2>
+                    <p class="text-gray-600 mt-4">Todo lo necesario para una estadía completa.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="service-card p-8 rounded-xl">
+                        <i data-lucide="wifi" class="w-10 h-10 text-wine mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold mb-2 text-center">WiFi y TV Cable</h3>
+                        <p class="text-gray-600 text-center">Conectividad en todo el hotel.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-xl">
+                        <i data-lucide="car" class="w-10 h-10 text-wine mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold mb-2 text-center">2 Estacionamientos</h3>
+                        <p class="text-gray-600 text-center">Amplios y seguros para su vehículo.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-xl">
+                        <i data-lucide="droplets" class="w-10 h-10 text-wine mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold mb-2 text-center">Agua Caliente</h3>
+                        <p class="text-gray-600 text-center">Duchas con agua caliente permanente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO -->
+        <div class="gradient-connector beige-to-white"></div>
+
+        <!-- UBICACIÓN RESTAURADA (Fondo Blanco Puro, Mapa Destacado) -->
+        <section id="ubicacion" class="py-20 bg-white">
+             <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-serif text-gray-800 mb-8">Ubicación</h2>
+                <div class="map-wrapper group">
+                    <a href="https://www.google.com/maps?q=Av.+Paez+entre+calles+8+y+9,+La+Puerta,+Trujillo" target="_blank" class="map-overlay-link" title="Abrir en Google Maps"></a>
+                    
+                    <!-- MARCADO PERSONALIZADO (NUEVO) -->
+                    <div class="custom-pin-container">
+                        <div class="pin-label">Hotel MAGLA</div>
+                        <div class="pin-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="pin-svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                <circle cx="12" cy="9" r="2.5" class="pin-inner-circle"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <iframe class="map-iframe" src="https://maps.google.com/maps?q=Av.+Paez+entre+calles+8+y+9,+La+Puerta,+Trujillo&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="absolute bottom-4 right-4 bg-white text-gray-800 px-4 py-2 rounded-lg shadow-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 flex items-center">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> Clic para abrir mapa
+                    </div>
+                </div>
+                <p class="text-gray-600 mt-6 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5 mr-2 text-wine"></i> Av. Páez entre calles 8 y 9, N° 69, La Puerta, Edo. Trujillo</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="footer-logo">
+                <div class="footer-links mb-6">
+                    <a href="index.html">Inicio</a>
+                    <a href="habitaciones.html">Habitaciones</a>
+                    <a href="reservas.html">Contacto</a>
+                </div>
+                <p class="text-gray-400 mb-4">© 2025 Hotel Magla. Todos los derechos reservados.</p>
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" class="text-gray-400 hover:text-white transition">Instagram</a>
+                    <a href="https://wa.me/582718811928" class="text-gray-400 hover:text-green-500 transition">WhatsApp</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- STICKY BOTTOM BAR -->
+        <div class="mobile-sticky-bar">
+            <a href="https://wa.me/582718811928" class="sticky-btn sticky-whatsapp">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> WhatsApp
+            </a>
+            <a href="reservas.html" class="sticky-btn sticky-reservar">
+                <i data-lucide="calendar" class="w-5 h-5 mr-2"></i> Reservar
+            </a>
+        </div>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

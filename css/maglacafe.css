@@ -1,0 +1,78 @@
+/* ==========================================
+   ESTILOS ESPECÍFICOS PARA MAGLA CAFÉ
+   ========================================== */
+
+/* Hero */
+.cafe-hero {
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cafe-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.cafe-content {
+    position: relative;
+    z-index: 10;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Sección Full Width Beige con transición suave */
+.section-cafe-beige {
+    background-color: var(--color-beige);
+    padding: 5rem 1rem;
+    position: relative;
+}
+
+/* Tarjetas Blancas Flotantes (Estilo Referencia) */
+.cafe-card-white {
+    background: white;
+    border-radius: 1rem;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.cafe-card-white:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono con fondo circular beige muy suave */
+.cafe-icon-circle {
+    background-color: #FFF8F3; /* Beige rojizo muy muy claro */
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    color: var(--color-wine); /* Icono VINO como pediste */
+}
+
+.cafe-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.cafe-card-text {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+}

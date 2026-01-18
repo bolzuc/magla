@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO LOCAL -->
+    <title>Habitaciones y Tarifas | Hotel MAGLA La Puerta</title>
+    <meta name="description" content="Elige tu habitación ideal en La Puerta. Suites románticas, habitaciones familiares y apartamentos equipados. Wifi, agua caliente y estacionamiento.">
+    <link rel="canonical" href="https://www.hotelmagla.com/habitaciones.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hotelmagla.com/habitaciones.html">
+    <meta property="og:title" content="Habitaciones y Suites | Hotel Magla">
+    <meta property="og:description" content="Conoce nuestros espacios: Matrimoniales, Familiares y Casa Privada.">
+    <meta property="og:image" content="https://www.hotelmagla.com/img/habitaciones/habitacion-suit-especial.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar-footer.css">
+    <link rel="stylesheet" href="css/habitaciones.css">
+</head>
+<body class="antialiased bg-white">
+
+    <!-- Navbar -->
+    <header id="main-header" class="fixed w-full top-0 z-50 header-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-32">
+                <a href="index.html" class="logo-link py-2">
+                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img">
+                </a>
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="habitaciones.html" class="nav-link active">Habitaciones</a>
+                    <a href="maglacafe.html" class="nav-link">Magla Café</a>
+                    <a href="galeria.html" class="nav-link">Galería</a>
+                    <a href="index.html#servicios" class="nav-link">Servicios</a>
+                </nav>
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary"><span>Reservar</span></a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2"><i data-lucide="menu" class="w-10 h-10"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-xl top-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
+                <a href="index.html" class="mobile-nav-link text-gray-800">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 active">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link text-gray-800">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800">Galería</a>
+                <a href="reservas.html" class="btn-action btn-primary w-full mt-4">Reservar Ahora</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- Header Sección -->
+        <section class="rooms-header">
+            <div class="relative z-20 px-4 animate-fade-in-up mt-10">
+                <h1 class="text-5xl md:text-7xl font-serif mb-4 text-shadow-md">Nuestros Espacios</h1>
+                <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-light text-shadow-sm">Confort y Distinción en La Puerta.</p>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO 1: REDUCIDO A 50px (Muy discreto, solo el borde) -->
+        <div class="gradient-connector hero-to-beige" style="height: 50px; margin-top: -50px; background: linear-gradient(to bottom, transparent 0%, var(--color-beige) 100%);"></div>
+
+        <!-- GESTIÓN DE UBICACIONES (Sección Beige) -->
+        <section class="py-16 bg-beige-section">
+             <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-10 animate-fade-in-up">
+                    <span class="text-wine font-bold tracking-widest uppercase text-xs mb-2 block">Información Importante</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-800">Dos Ambientes Exclusivos</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Para tu comodidad, contamos con dos ubicaciones distintas según el tipo de experiencia que busques.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Opción 1: Sede Principal -->
+                    <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-sm border border-transparent hover:border-wine/20 transition-all duration-300">
+                        <div class="bg-wine/5 p-3 rounded-full text-wine shrink-0">
+                             <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg font-serif mb-1">Sede Principal</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Ubicada frente a la Plaza Bolívar. Ideal para estar en el centro de la actividad turística.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Opción 2: Etapa Los Pinos -->
+                    <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-sm border border-transparent hover:border-wine/20 transition-all duration-300">
+                        <div class="bg-wine/5 p-3 rounded-full text-wine shrink-0">
+                             <i data-lucide="trees" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg font-serif mb-1">Etapa Los Pinos</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                A solo 2 cuadras de la principal. Un refugio diseñado para mayor privacidad y silencio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO 2: Del Beige al Blanco -->
+        <div class="gradient-connector beige-to-white"></div>
+
+        <!-- CATEGORÍA 1: PAREJAS (Fondo Blanco) -->
+        <section class="pt-8 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-gray-800">Suites & Parejas</h2>
+                <div class="w-24 h-1 bg-wine mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <!-- Matrimonial (CON ICONO DE ACCESIBILIDAD) -->
+                <div class="room-card group">
+                    <div class="room-image-container">
+                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Matrimonial">
+                    </div>
+                    <div class="room-content">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="room-title mb-0">Matrimonial</h3>
+                            <!-- BADGE ACCESIBILIDAD -->
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-full flex items-center border border-blue-200" title="Habitación en Planta Baja accesible">
+                                <i data-lucide="accessibility" class="w-3 h-3 mr-1"></i> Accesible
+                            </span>
+                        </div>
+                        <span class="room-capacity">2 PERSONAS</span>
+                        <div class="room-info-box">
+                            <strong>Camas:</strong> 1 Cama Matrimonial
+                        </div>
+                        <div class="room-features">
+                            <div><i data-lucide="bed-double"></i> 1 Cama Matrimonial</div>
+                            <div><i data-lucide="tv"></i> TV por Cable</div>
+                            <div><i data-lucide="droplets"></i> Agua Caliente</div>
+                        </div>
+                        <div class="room-btn-container">
+                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suite -->
+                <div class="room-card group relative">
+                    <span class="tag-badge tag-premium">Premium</span>
+                    <div class="room-image-container">
+                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Suite">
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Suite Matrimonial</h3>
+                        <span class="room-capacity">2 PERSONAS</span>
+                        <div class="room-info-box">
+                            <strong>Camas:</strong> 1 King Size + Zona de estar
+                        </div>
+                        <div class="room-features">
+                            <div><i data-lucide="maximize"></i> Mayor Amplitud</div>
+                            <div><i data-lucide="sofa"></i> Zona de Estar</div>
+                            <div><i data-lucide="star"></i> Decoración Especial</div>
+                        </div>
+                        <div class="room-btn-container">
+                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        </div>
+                    </div>
+                </div>
+                 
+                 <!-- Suite Especial -->
+                 <div class="room-card group relative">
+                    <span class="tag-badge tag-luxury">Lujo</span>
+                    <div class="room-image-container">
+                        <img src="img/habitaciones/habitacion-suit-especial.jpg" loading="lazy" alt="Suite Lujo">
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Suite Especial</h3>
+                        <p class="room-capacity">2 PERSONAS</p>
+                        <div class="room-info-box">
+                             <strong>Detalle:</strong> Ideal Noche de Bodas
+                        </div>
+                        <div class="room-features">
+                            <div><i data-lucide="gem"></i> Lujo Total</div>
+                            <div><i data-lucide="heart"></i> Experiencia Romántica</div>
+                            <div><i data-lucide="sun"></i> Vista Privilegiada</div>
+                        </div>
+                        <div class="room-btn-container">
+                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO 3: Blanco a Beige -->
+        <div class="gradient-connector white-to-beige"></div>
+
+        <!-- SECCIÓN 2: FAMILIAS (Fondo Beige) -->
+        <section class="py-16 w-full bg-beige-section relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-serif text-gray-800">Familiares</h2>
+                    <p class="text-gray-600 mt-2">Espacios pensados para compartir.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                    <!-- Triple -->
+                    <div class="room-card group">
+                        <div class="room-image-container">
+                            <img src="img/habitaciones/habitacion-5-personas.jpg" loading="lazy" alt="Triple">
+                        </div>
+                        <div class="room-content">
+                            <h3 class="room-title">Triple</h3>
+                            <span class="room-capacity">3 PERSONAS</span>
+                            <div class="room-info-box">
+                                <strong>Camas:</strong> 1 Matrimonial + 1 Cama Gaveta
+                            </div>
+                            <div class="room-features">
+                                <div><i data-lucide="users"></i> Capacidad ideal</div>
+                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
+                            </div>
+                            <div class="room-btn-container">
+                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cuádruple -->
+                    <div class="room-card group">
+                        <div class="room-image-container">
+                             <img src="img/habitaciones/habitacion-5-personas2.jpg" loading="lazy" alt="Cuadruple">
+                        </div>
+                        <div class="room-content">
+                            <h3 class="room-title">Cuádruple</h3>
+                            <span class="room-capacity">4 PERSONAS</span>
+                            <div class="room-info-box">
+                                <strong>Opción A:</strong> 1 Mat + Litera<br>
+                                <strong>Opción B:</strong> 2 Matrimoniales
+                            </div>
+                            <div class="room-features">
+                                <div><i data-lucide="layout"></i> Espacio Versátil</div>
+                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
+                            </div>
+                            <div class="room-btn-container">
+                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quíntuple -->
+                    <div class="room-card group">
+                        <div class="room-image-container">
+                             <img src="img/habitaciones/habitacion-5-personas.jpg" loading="lazy" alt="Quintuple">
+                        </div>
+                        <div class="room-content">
+                            <h3 class="room-title">Quíntuple</h3>
+                            <span class="room-capacity">5 PERSONAS</span>
+                            <div class="room-info-box">
+                                <strong>Camas:</strong> 1 Mat + 1 Litera + 1 Gaveta
+                            </div>
+                            <div class="room-features">
+                                <div><i data-lucide="users"></i> Gran Capacidad</div>
+                                <div><i data-lucide="snowflake"></i> Nevera Ejecutiva</div>
+                            </div>
+                            <div class="room-btn-container">
+                                <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUENTE DEGRADADO 4: Beige a Blanco -->
+        <div class="gradient-connector beige-to-white"></div>
+
+        <!-- SECCIÓN 3: GRUPOS Y APARTAMENTOS (Fondo Blanco) -->
+        <section class="pt-8 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-gray-800">Apartamentos y Grupos</h2>
+                <div class="w-24 h-1 bg-wine mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Apartamentos -->
+                <div class="room-card group">
+                    <div class="room-image-container h-64">
+                         <img src="img/habitaciones/comedor-suit-especial.jpg" loading="lazy" alt="Cocina">
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Apartamentos Equipados</h3>
+                        <p class="room-capacity">6 A 7 PERSONAS</p>
+                        <div class="room-info-box">
+                             <strong>Incluye:</strong> Cocina con utensilios y Nevera Grande
+                        </div>
+                        <div class="room-features">
+                            <div><i data-lucide="utensils"></i> Cocina con utensilios</div>
+                            <div><i data-lucide="box"></i> Nevera Grande</div>
+                            <div><i data-lucide="door-open"></i> Habitaciones separadas</div>
+                        </div>
+                        <div class="room-btn-container">
+                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Casa Privada -->
+                <div class="room-card group">
+                    <div class="room-image-container h-64">
+                         <img src="img/fachada.jpg" loading="lazy" alt="Casa">
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">La Casa Privada</h3>
+                        <p class="room-capacity">10 PERSONAS</p>
+                        <div class="room-info-box">
+                            <strong>Exclusivo:</strong> Parrillera y Estacionamiento Privado
+                        </div>
+                        <div class="room-features">
+                            <div><i data-lucide="flame"></i> Parrillera Privada</div>
+                            <div><i data-lucide="car"></i> Estacionamiento Propio</div>
+                            <div><i data-lucide="home"></i> Privacidad Total</div>
+                        </div>
+                        <div class="room-btn-container">
+                            <a href="reservas.html" class="btn-room">Ver disponibilidad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="footer-logo">
+                <div class="footer-links mb-6">
+                    <a href="index.html">Inicio</a>
+                    <a href="habitaciones.html">Habitaciones</a>
+                    <a href="reservas.html">Contacto</a>
+                </div>
+                <p class="text-gray-400 mb-4">© 2025 Hotel Magla. Todos los derechos reservados.</p>
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" class="text-gray-400 hover:text-white transition">Instagram</a>
+                    <a href="https://wa.me/582718811928" class="text-gray-400 hover:text-green-500 transition">WhatsApp</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
