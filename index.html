@@ -3,69 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Magla | Tu Refugio en Los Andes</title>
-    <meta name="description" content="Hotel Magla: Alojamiento familiar y boutique en La Puerta. Dos ambientes exclusivos, Magla Café y salones de eventos.">
-    <!-- FAVICON -->
+    <title>Hotel Magla | Tu Refugio Premium en Los Andes</title>
+    <meta name="description" content="Hotel Magla: Alojamiento boutique en La Puerta. Disfruta de la montaña con confort premium, café de altura y atención personalizada.">
     <link rel="icon" type="image/png" href="img/logo.png">
 
+    <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wine: '#6A1B1F',
+                        beige: '#FDF6E3'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar-footer.css">
 
+    <!-- Estilos Específicos Restaurados (Mapa & Pin) -->
     <style>
         .map-wrapper { position: relative; width: 100%; height: 450px; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; background: white; }
         .map-iframe { width: 100%; height: 100%; border: 0; filter: grayscale(10%); } 
         .map-overlay-link { position: absolute; inset: 0; z-index: 20; cursor: pointer; background: transparent; }
+        
+        /* PIN COLOR VINO RESTAURADO */
         .custom-pin-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); z-index: 30; pointer-events: none; display: flex; flex-direction: column; align-items: center; margin-top: -20px; animation: floatPin 3s ease-in-out infinite; }
-        .pin-label { background-color: white; border: 2px solid var(--color-wine); color: var(--color-wine); padding: 0.5rem 1.2rem; border-radius: 0.5rem; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); white-space: nowrap; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
-        .pin-label::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background-color: white; border-bottom: 2px solid var(--color-wine); border-right: 2px solid var(--color-wine); }
-        .pin-icon-wrapper { color: var(--color-wine); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+        .pin-label { background-color: white; border: 2px solid #6A1B1F; color: #6A1B1F; padding: 0.5rem 1.2rem; border-radius: 0.5rem; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); white-space: nowrap; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+        .pin-label::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background-color: white; border-bottom: 2px solid #6A1B1F; border-right: 2px solid #6A1B1F; }
+        .pin-icon-wrapper { color: #6A1B1F; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
         .pin-svg { width: 64px; height: 64px; fill: currentColor; }
         .pin-inner-circle { fill: white; }
-        @keyframes floatPin { 0%, 100% { transform: translate(-50%, -100%); } 50% { transform: translate(-50%, -110%); } }
         
-        /* Clase personalizada para el hover beige/vino en botones */
-        .hover-beige-effect:hover {
-            background-color: var(--color-beige) !important;
-            color: var(--color-wine) !important;
-            border-color: var(--color-beige) !important;
-        }
+        @keyframes floatPin { 0%, 100% { transform: translate(-50%, -100%); } 50% { transform: translate(-50%, -110%); } }
     </style>
+
+    <!-- SEO: Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Hotel Magla",
+      "description": "Tu refugio en Los Andes con atención premium y vistas espectaculares.",
+      "image": "https://www.hotelmagla.com/img/portada-hotel-horizontal.jpeg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Páez entre calles 8 y 9",
+        "addressLocality": "La Puerta",
+        "addressRegion": "Trujillo",
+        "addressCountry": "VE"
+      },
+      "telephone": "+58-271-8811928",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "4.8"
+      }
+    }
+    </script>
 </head>
 <body class="antialiased relative text-gray-800">
 
-    <!-- Navbar Unificado -->
+    <!-- Navbar -->
     <header id="main-header" class="fixed w-full top-0 z-50 header-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-32"> 
-                <a href="index.html" class="logo-link py-2">
-                    <img src="img/logo.png" alt="MAGLA Logo" class="logo-img drop-shadow-lg">
-                </a>
-                
+                <a href="index.html" class="logo-link py-2"><img src="img/logo.png" alt="MAGLA Logo" class="logo-img drop-shadow-lg"></a>
                 <nav class="hidden lg:flex space-x-8 items-center">
                     <a href="index.html" class="nav-link active">Inicio</a>
                     <a href="habitaciones.html" class="nav-link">Habitaciones</a>
                     <a href="maglacafe.html" class="nav-link">Magla Café</a>
                     <a href="galeria.html" class="nav-link">Galería</a>
                 </nav>
-
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link text-white hover:text-wine transition" title="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="reservas.html" class="btn-action btn-primary shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"><span>Reservar</span></a>
+                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link text-white hover:text-wine transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="reservas.html" class="btn-action btn-primary shadow-lg hover:shadow-xl hover:-translate-y-1 transition"><span>Reservar</span></a>
                 </div>
-
                 <button id="mobile-menu-btn" class="lg:hidden p-2 text-white"><i data-lucide="menu" class="w-10 h-10"></i></button>
             </div>
         </div>
-        <!-- Menú Móvil -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-2xl top-full left-0 border-t border-gray-100">
-            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col text-left">
-                <a href="index.html" class="mobile-nav-link active text-gray-800 font-serif text-lg py-2">Inicio</a>
-                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 font-serif text-lg py-2">Habitaciones</a>
-                <a href="maglacafe.html" class="mobile-nav-link text-gray-800 font-serif text-lg py-2">Magla Café</a>
-                <a href="galeria.html" class="mobile-nav-link text-gray-800 font-serif text-lg py-2">Galería</a>
+            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-nav-link active text-gray-800">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link text-gray-800">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800">Galería</a>
                 <a href="reservas.html" class="btn-action btn-primary w-full mt-4 justify-center">Reservar Ahora</a>
             </div>
         </div>
@@ -75,78 +106,58 @@
         <!-- HERO -->
         <section id="inicio" class="relative h-[100vh] flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <picture>
-                    <img src="img/portada-hotel-horizontal.jpeg" alt="Amanecer en Hotel Magla La Puerta" class="w-full h-full object-cover scale-105 animate-slow-zoom">
-                </picture>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30 z-0"></div>
+                <img src="img/portada-hotel-horizontal.jpeg" alt="Amanecer en Hotel Magla" class="w-full h-full object-cover scale-105 animate-slow-zoom">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/40 z-0"></div>
             </div>
-             
-             <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto fade-in-up mt-16">
+            <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto fade-in-up mt-16">
                 <div class="inline-block mb-4 border-b-2 border-wine pb-1">
-                    <span class="uppercase tracking-[0.4em] text-xs md:text-sm font-bold text-shadow-lg">La Puerta, Edo. Trujillo</span>
+                    <span class="uppercase tracking-[0.4em] text-xs md:text-sm font-bold text-shadow-md">La Puerta, Venezuela</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight font-serif text-shadow-xl">Hotel MAGLA</h1>
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight font-serif text-shadow-xl drop-shadow-2xl">Hotel MAGLA</h1>
                 <p class="text-xl md:text-3xl font-light italic mb-12 opacity-95 max-w-3xl mx-auto text-shadow-md">"Donde el silencio de la montaña te da la bienvenida"</p>
-                
                 <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-                    <a href="habitaciones.html" class="btn-action btn-primary text-lg px-10 py-4 shadow-2xl hover:shadow-wine/50 border-wine border hover:scale-105 transition duration-300">
-                        Ver Habitaciones
-                    </a>
-                    <!-- BOTÓN CORREGIDO: Clase 'hover-beige-effect' añadida -->
-                    <a href="#ubicacion" class="btn-action hover-beige-effect text-lg px-8 py-3 border-2 border-white/80 text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg backdrop-blur-sm">
-                        <i data-lucide="map-pin" class="w-5 h-5"></i>
-                        ¿Dónde estamos?
+                    <a href="habitaciones.html" class="btn-action btn-primary text-lg px-10 py-4 shadow-2xl border-wine border hover:scale-105 transition duration-300">Ver Habitaciones</a>
+                    <a href="#ubicacion" class="btn-action text-lg px-8 py-3 border-2 border-white/80 text-white hover:bg-beige hover:text-wine hover:border-beige transition-all duration-300 flex items-center justify-center gap-2 shadow-lg backdrop-blur-sm">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i> Ubicación
                     </a>
                 </div>
-            </div>
-            
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white/70">
-                <i data-lucide="chevron-down" class="w-10 h-10"></i>
             </div>
         </section>
 
-        <div class="gradient-connector hero-to-beige" style="height: 150px; margin-top: -150px; background: linear-gradient(to bottom, transparent 0%, var(--color-beige) 100%); position: relative; z-index: 20;"></div>
+        <div class="gradient-connector hero-to-beige"></div>
 
         <!-- SEDES -->
         <section id="sedes" class="py-20 md:py-24 relative overflow-hidden bg-beige-section">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
                 <div class="text-center mb-16">
                     <span class="text-wine font-bold tracking-widest uppercase text-xs">Nuestra Esencia</span>
-                    <h2 class="text-4xl md:text-5xl mt-2 text-gray-900 font-serif">Dos Ambientes, Una Misma Calidez</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto font-light">Hemos creado dos atmósferas distintas para que elijas cómo quieres vivir tu descanso.</p>
+                    <h2 class="text-4xl md:text-5xl mt-2 text-gray-900 font-serif">Dos Ambientes Exclusivos</h2>
                 </div>
-
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-start">
                     <!-- Sede Principal -->
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-wine flex flex-col h-full">
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-wine h-full">
                         <div class="h-72 overflow-hidden relative">
-                            <img src="img/fachada-horizontal.png" alt="Sede Principal" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                            <img src="img/fachada-horizontal.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         </div>
                         <div class="p-8 md:p-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="bg-wine/10 p-3 rounded-full text-wine"><i data-lucide="hotel" class="w-8 h-8"></i></div>
-                                <h3 class="text-2xl font-serif text-gray-800 font-bold">Sede Principal</h3>
-                            </div>
-                            <p class="text-gray-600 leading-relaxed mb-6">El corazón de Magla. Ubicada frente a la Plaza Bolívar, ideal para quienes buscan sentir el pulso del pueblo y la comodidad de tener recepción 24h.</p>
+                            <h3 class="text-2xl font-serif text-gray-800 font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="hotel" class="text-wine"></i> Sede Principal
+                            </h3>
+                            <p class="text-gray-600 mb-6">Frente a la Plaza Bolívar. Recepción 24h, confort clásico y acceso directo a la vida del pueblo.</p>
                         </div>
                     </div>
-
-                    <!-- Etapa Los Pinos -->
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-wine flex flex-col h-full">
-                         <div class="h-72 overflow-hidden relative">
-                            <img src="img/2da-etapa-horizontal.png" alt="Etapa Los Pinos" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                    <!-- Los Pinos -->
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-wine h-full">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="img/2da-etapa-horizontal.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         </div>
                         <div class="p-8 md:p-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="bg-wine/10 p-3 rounded-full text-wine"><i data-lucide="trees" class="w-8 h-8"></i></div>
-                                <h3 class="text-2xl font-serif text-gray-800 font-bold">Etapa Los Pinos</h3>
-                            </div>
-                            <p class="text-gray-600 leading-relaxed mb-4">Nuestro refugio privado. A solo pasos del centro, rodeado de silencio.</p>
-                            <!-- NOTA LOGÍSTICA AGREGADA -->
+                            <h3 class="text-2xl font-serif text-gray-800 font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="trees" class="text-wine"></i> Etapa Los Pinos
+                            </h3>
+                            <p class="text-gray-600 mb-4">Privacidad absoluta rodeada de naturaleza. Cabañas y suites para desconexión total.</p>
                             <div class="bg-gray-50 border-l-4 border-wine p-4 rounded-r-lg text-sm text-gray-700">
-                                <strong>Logística VIP:</strong> Check-in centralizado en Sede Principal. Contamos con guía y <strong>vehículo del hotel</strong> para trasladarte cómodamente hasta tu cabaña.
+                                <strong>Premium Service:</strong> Incluye traslado privado desde recepción hasta tu cabaña.
                             </div>
                         </div>
                     </div>
@@ -154,100 +165,125 @@
             </div>
         </section>
 
-        <!-- SERVICIOS DESTACADOS -->
-        <div class="gradient-connector beige-to-white"></div>
-        <section id="servicios" class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- SERVICIOS -->
+        <section id="servicios" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
                     <span class="text-wine font-bold tracking-widest uppercase text-xs">Comodidades</span>
-                    <h2 class="text-3xl md:text-4xl mt-2 text-gray-900 font-serif">Servicios Pensados en Ti</h2>
+                    <h2 class="text-3xl md:text-4xl mt-2 text-gray-900 font-serif">Detalles que Enamoran</h2>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Item Shuttle/Parking -->
-                    <div class="bg-beige-section p-6 rounded-xl border border-gray-100 hover:shadow-lg transition">
-                        <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center text-wine mb-4 shadow-sm">
-                            <i data-lucide="car" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-gray-800 mb-2">Traslados Internos & Parking</h4>
-                        <p class="text-sm text-gray-600">Vehículo privado del hotel a su disposición. Si usamos el parking anexo, nosotros te llevamos a la puerta de tu habitación. Cero caminatas.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="service-card p-8 rounded-xl border border-gray-100">
+                        <i data-lucide="car" class="w-10 h-10 mb-4"></i>
+                        <h4 class="font-bold text-xl text-gray-800 mb-2 font-serif">Traslado VIP & Parking</h4>
+                        <p class="text-gray-600">Olvídate del auto. Nuestro personal se encarga del traslado interno y de tu equipaje.</p>
                     </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition">
-                        <div class="bg-beige-section w-12 h-12 rounded-full flex items-center justify-center text-wine mb-4 shadow-sm">
-                            <i data-lucide="wifi" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-gray-800 mb-2">Conexión Total</h4>
-                        <p class="text-sm text-gray-600">WiFi de alta velocidad disponible tanto en habitaciones como en áreas comunes y Magla Café.</p>
+                    <div class="service-card p-8 rounded-xl border border-gray-100">
+                        <i data-lucide="wifi" class="w-10 h-10 mb-4"></i>
+                        <h4 class="font-bold text-xl text-gray-800 mb-2 font-serif">Conexión Fibra</h4>
+                        <p class="text-gray-600">WiFi de alta velocidad en todo el complejo, ideal para compartir tus momentos o trabajar remoto.</p>
                     </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition">
-                        <div class="bg-beige-section w-12 h-12 rounded-full flex items-center justify-center text-wine mb-4 shadow-sm">
-                            <i data-lucide="droplets" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-gray-800 mb-2">Agua Caliente 24/7</h4>
-                        <p class="text-sm text-gray-600">Sistema de calentadores garantizado para que disfrutes de una ducha reconfortante en el clima de montaña.</p>
+                    <div class="service-card p-8 rounded-xl border border-gray-100">
+                        <i data-lucide="droplets" class="w-10 h-10 mb-4"></i>
+                        <h4 class="font-bold text-xl text-gray-800 mb-2 font-serif">Agua Caliente Real</h4>
+                        <p class="text-gray-600">Sistemas de calentamiento garantizados para el clima andino, disponibles 24/7.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- RUTA TURÍSTICA -->
-        <section class="py-20 bg-white overflow-hidden border-t border-gray-100">
+        <section class="py-20 bg-gray-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <span class="text-wine font-bold tracking-widest uppercase text-xs">Experiencias</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Descubre La Puerta</h2>
+                    <p class="text-gray-600 text-lg mb-8">Hemos diseñado una ruta exclusiva para nuestros huéspedes.</p>
+                    <button onclick="document.getElementById('modalRuta').classList.remove('hidden')" class="btn-action btn-primary shadow-xl">
+                        <i data-lucide="map" class="w-5 h-5 mr-2"></i> Ver Mapa Turístico
+                    </button>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img src="img/ruta-turistica-poster-vertical.jpeg" onclick="document.getElementById('modalRuta').classList.remove('hidden')" class="rounded-lg shadow-2xl max-h-[500px] cursor-pointer hover:scale-[1.02] transition">
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS (EXPERIENCIAS) -->
+        <section class="py-24 bg-white relative">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-                    <div class="w-full md:w-1/2 order-2 md:order-1 animate-fade-in-up">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="h-[2px] w-10 bg-wine"></div>
-                            <span class="text-wine font-bold tracking-widest uppercase text-xs">Descubre La Puerta</span>
+                <div class="text-center mb-16">
+                    <i data-lucide="star" class="w-8 h-8 text-yellow-500 fill-current mx-auto mb-2"></i>
+                    <h2 class="text-4xl font-serif text-gray-900">Historias de Nuestros Huéspedes</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition duration-300">
+                        <div class="flex text-yellow-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-serif text-gray-900 mb-6 leading-tight">Vive la Magia de <br><span class="text-wine italic">Los Andes</span></h2>
-                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                            No solo vienes a dormir, vienes a vivir. Te hemos preparado una ruta exclusiva con los puntos imperdibles: desde caminatas ecológicas hasta los rincones históricos más fotogénicos.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-4">
-                            <button onclick="document.getElementById('modalRuta').classList.remove('hidden')" class="btn-action btn-primary shadow-xl hover:scale-105 transition">
-                                <i data-lucide="map" class="w-5 h-5 mr-2"></i> Ver Mapa Turístico
-                            </button>
-                            <!-- ELIMINADO: Botón "Ver fotos del pueblo" -->
+                        <p class="text-gray-600 italic mb-6">"Un verdadero oasis de paz. La atención en la Sede Los Pinos fue excepcional, nos sentimos completamente desconectados del ruido."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center text-wine font-bold">MG</div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 text-sm">María González</h5>
+                                <span class="text-xs text-gray-500">Visitó en Enero 2026</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="w-full md:w-1/2 order-1 md:order-2 flex justify-center relative">
-                        <div class="absolute -inset-4 bg-wine/5 rounded-full blur-3xl"></div>
-                        <img src="img/ruta-turistica-poster-vertical.jpeg" onclick="document.getElementById('modalRuta').classList.remove('hidden')" alt="Póster Ruta Turística" class="relative rounded-xl shadow-2xl max-h-[600px] object-contain border border-gray-100 cursor-zoom-in hover:rotate-1 transition duration-500">
+                    <!-- Testimonio 2 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition duration-300">
+                        <div class="flex text-yellow-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"El mejor café de los Andes sin duda. Ver el atardecer desde la terraza de Magla Café es una experiencia obligatoria."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center text-wine font-bold">CR</div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 text-sm">Carlos Rodríguez</h5>
+                                <span class="text-xs text-gray-500">Visitó en Diciembre 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonio 3 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition duration-300">
+                        <div class="flex text-yellow-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"Impecable. Las habitaciones familiares son amplias y muy limpias. El personal siempre atento a cada detalle."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center text-wine font-bold">SL</div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 text-sm">Sofía López</h5>
+                                <span class="text-xs text-gray-500">Visitó en Febrero 2026</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TEASER MAGLA CAFÉ -->
-        <section id="magla-cafe" class="py-24 md:py-32 bg-fixed bg-cover bg-center relative" style="background-image: url('img/terraza-amaneciendo-horizontal.png');">
-             <div class="absolute inset-0 bg-black/60"></div>
-             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-2xl bg-white/10 backdrop-blur-md p-10 md:p-14 rounded-3xl border border-white/20 shadow-2xl transform hover:scale-[1.01] transition duration-500">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="bg-white/20 p-2 rounded-full"><i data-lucide="coffee" class="text-white w-6 h-6"></i></div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide">Magla Café</h2>
-                    </div>
-                    <h3 class="text-3xl md:text-5xl font-serif italic text-white mb-6 leading-tight">"Amaneceres con aroma a café"</h3>
-                    <p class="text-white/90 text-lg mb-8 font-light">Disfruta de nuestros desayunos criollos en la terraza más alta, donde la neblina y el sabor se encuentran.</p>
-                    <a href="maglacafe.html" class="btn-action bg-white text-wine hover:bg-gray-100 border-none font-bold px-8 py-3 shadow-lg">
-                        Ver Menú y Horarios
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- UBICACIÓN -->
-        <section id="ubicacion" class="py-20 bg-white">
-             <div class="max-w-7xl mx-auto px-4 text-center">
-                <span class="text-wine font-bold tracking-widest uppercase text-xs">Cómo Llegar</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-10 mt-2">Nuestra Ubicación</h2>
+        <!-- UBICACIÓN (Con el PIN VINO RESTAURADO) -->
+        <section id="ubicacion" class="py-20 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-serif text-gray-900 mb-8">Nuestra Ubicación</h2>
                 
                 <div class="map-wrapper group shadow-2xl border-2 border-gray-100">
                     <a href="https://www.google.com/maps?q=Av.+Paez+entre+calles+8+y+9,+La+Puerta,+Trujillo" target="_blank" class="map-overlay-link" title="Abrir en Google Maps"></a>
+                    
+                    <!-- PIN COLOR VINO RESTAURADO -->
                     <div class="custom-pin-container">
                         <div class="pin-label">Hotel MAGLA</div>
                         <div class="pin-icon-wrapper">
@@ -257,40 +293,35 @@
                             </svg>
                         </div>
                     </div>
+                    
                     <iframe class="map-iframe" src="https://maps.google.com/maps?q=Av.+Paez+entre+calles+8+y+9,+La+Puerta,+Trujillo&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
                 </div>
+                
                 <p class="text-gray-600 mt-6 flex items-center justify-center font-medium"><i data-lucide="map-pin" class="w-5 h-5 mr-2 text-wine"></i> Av. Páez entre calles 8 y 9, N° 69, La Puerta, Edo. Trujillo</p>
             </div>
         </section>
 
-        <!-- FOOTER UNIFICADO -->
+        <!-- Footer -->
         <footer class="site-footer bg-gray-900 border-t-4 border-wine pt-16 pb-8 text-white">
             <div class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
                 <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="h-32 mb-8 opacity-90 hover:opacity-100 transition duration-300">
-                
-                <div class="flex flex-wrap justify-center gap-8 mb-10">
-                    <a href="index.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Inicio</a>
-                    <a href="habitaciones.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Habitaciones</a>
-                    <a href="reservas.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Reservar</a>
-                    <a href="maglacafe.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Café</a>
+                <div class="flex gap-8 mb-10">
+                    <a href="index.html" class="text-xs uppercase tracking-widest hover:text-wine transition font-bold text-gray-400">Inicio</a>
+                    <a href="habitaciones.html" class="text-xs uppercase tracking-widest hover:text-wine transition font-bold text-gray-400">Habitaciones</a>
+                    <a href="reservas.html" class="text-xs uppercase tracking-widest hover:text-wine transition font-bold text-gray-400">Reservar</a>
                 </div>
-                
-                <div class="flex justify-center gap-6 mb-10">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-wine transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="https://wa.me/582718811928" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-green-600 transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+                <div class="flex gap-6 mb-10">
+                    <a href="https://www.instagram.com/hotelmagla" target="_blank" class="bg-gray-800 p-3 rounded-full hover:bg-wine transition"><i data-lucide="instagram"></i></a>
+                    <a href="https://wa.me/582718811928" target="_blank" class="bg-gray-800 p-3 rounded-full hover:bg-green-600 transition"><i data-lucide="message-circle"></i></a>
                 </div>
-                
-                <div class="w-full h-px bg-gray-800 mb-6 max-w-xs mx-auto"></div>
-                <p class="text-gray-600 text-xs font-light">© 2026 Hotel Magla. Todos los derechos reservados.</p>
+                <p class="text-gray-600 text-xs">© 2026 Hotel Magla. Todos los derechos reservados.</p>
             </div>
         </footer>
-
     </main>
 
-    <!-- MODAL RUTA -->
+    <!-- Modal Ruta -->
     <div id="modalRuta" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm" onclick="this.classList.add('hidden')">
-        <button class="absolute top-4 right-4 text-white hover:text-wine transition"><i data-lucide="x" class="w-10 h-10"></i></button>
-        <img src="img/ruta-turistica-poster-vertical.jpeg" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl" alt="Mapa Turístico">
+        <img src="img/ruta-turistica-poster-vertical.jpeg" class="max-h-[90vh] rounded shadow-2xl">
     </div>
 
     <script src="js/main.js"></script>

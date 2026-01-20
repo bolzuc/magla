@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magla Café | Desayunos y Vistas en La Puerta</title>
-    <!-- FAVICON -->
+    <title>Magla Café | Origen Local en La Puerta</title>
     <link rel="icon" type="image/png" href="img/logo.png">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar-footer.css">
@@ -16,117 +14,96 @@
 </head>
 <body class="antialiased bg-white text-gray-800">
 
-    <!-- Navbar Unificado -->
+    <!-- Navbar -->
     <header id="main-header" class="fixed w-full top-0 z-50 header-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-32">
-                <a href="index.html" class="logo-link py-2"><img src="img/logo.png" alt="MAGLA Logo" class="logo-img drop-shadow-md"></a>
-                <nav class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="logo-link"><img src="img/logo.png" alt="Logo" class="logo-img drop-shadow"></a>
+                <nav class="hidden lg:flex space-x-8">
                     <a href="index.html" class="nav-link">Inicio</a>
                     <a href="habitaciones.html" class="nav-link">Habitaciones</a>
                     <a href="maglacafe.html" class="nav-link active">Magla Café</a>
                     <a href="galeria.html" class="nav-link">Galería</a>
                 </nav>
-                <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="social-nav-link text-white hover:text-wine transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="reservas.html" class="btn-action btn-primary shadow-md"><span>Reservar Hotel</span></a>
+                <div class="hidden lg:flex gap-4">
+                    <a href="reservas.html" class="btn-action btn-primary shadow">Reservar Hotel</a>
                 </div>
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-white"><i data-lucide="menu" class="w-10 h-10"></i></button>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-white"><i data-lucide="menu"></i></button>
             </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white absolute w-full shadow-xl top-full left-0 border-t">
             <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
-                <a href="index.html" class="mobile-nav-link text-gray-800 text-lg">Inicio</a>
-                <a href="habitaciones.html" class="mobile-nav-link text-gray-800 text-lg">Habitaciones</a>
-                <a href="maglacafe.html" class="mobile-nav-link text-gray-800 text-lg active">Magla Café</a>
-                <a href="galeria.html" class="mobile-nav-link text-gray-800 text-lg">Galería</a>
-                <a href="reservas.html" class="btn-action btn-primary w-full mt-4 justify-center">Reservar Ahora</a>
+                <a href="index.html" class="mobile-nav-link text-gray-800">Inicio</a>
+                <a href="habitaciones.html" class="mobile-nav-link text-gray-800">Habitaciones</a>
+                <a href="maglacafe.html" class="mobile-nav-link active text-gray-800">Magla Café</a>
+                <a href="galeria.html" class="mobile-nav-link text-gray-800">Galería</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Café Mejorado -->
+        <!-- Hero Café -->
         <section class="cafe-hero relative flex items-center justify-center min-h-[70vh] overflow-hidden">
             <div class="cafe-hero-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
-            <img src="img/terraza-amaneciendo-horizontal.png" alt="Vista Café Amanecer" class="absolute inset-0 w-full h-full object-cover animate-slow-zoom z-0">
+            <img src="img/terraza-amaneciendo-horizontal.png" alt="Vista Café" class="absolute inset-0 w-full h-full object-cover animate-slow-zoom z-0">
             <div class="cafe-content text-center px-4 relative z-20 mt-16 max-w-4xl">
                 <div class="inline-block border border-white/30 bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm mb-6">
                     <span class="text-white text-sm font-bold tracking-widest uppercase">Abierto al Público</span>
                 </div>
                 <h1 class="text-6xl md:text-8xl font-serif font-bold mb-6 text-white text-shadow-xl">Magla Café</h1>
-                <p class="text-2xl md:text-3xl font-light italic text-white/90 text-shadow-md">"Donde el cielo y el sabor se encuentran"</p>
+                <p class="text-2xl md:text-3xl font-light italic text-white/90 text-shadow-md">"Sabor local, altura mundial"</p>
             </div>
         </section>
 
-        <!-- INTRO ELEGANTE -->
-        <section class="py-20 bg-white">
+        <!-- INTRO STORYTELLING (Origen Local) -->
+        <section class="py-24 bg-white">
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <i data-lucide="coffee" class="w-10 h-10 text-wine mx-auto mb-6"></i>
-                <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-6">Una experiencia de altura</h2>
+                <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-6">El Secreto está en el Origen</h2>
+                <p class="text-lg text-gray-600 leading-relaxed font-light mb-4">
+                    En Magla Café, creemos que el lujo reside en la autenticidad. Trabajamos con 
+                    <strong>granos seleccionados de altura</strong>, cultivados por manos expertas en las montañas trujillanas.
+                </p>
                 <p class="text-lg text-gray-600 leading-relaxed font-light">
-                    Ubicado en nuestra terraza superior, Magla Café es más que una cafetería: es un mirador natural. 
-                    Ya sea para un desayuno energético antes de explorar La Puerta o para una tarde de chocolate caliente y neblina, 
-                    este es tu espacio.
+                    Nuestra repostería es <strong>artesanal del día</strong>, utilizando ingredientes frescos de pequeños productores locales de La Puerta. 
+                    Cada taza y cada plato cuentan la historia de nuestra tierra.
                 </p>
             </div>
         </section>
 
-        <!-- SECCIÓN MENÚ DESTACADA -->
-        <section class="py-24 bg-beige-section relative overflow-hidden" id="menu">
-            <!-- Elementos decorativos de fondo -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-wine/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            
-            <div class="max-w-6xl mx-auto px-4">
+        <!-- SECCIÓN MENÚ CON TEXTURA DE FONDO -->
+        <section class="py-24 relative overflow-hidden bg-texture-dots" id="menu"> <!-- Clase bg-texture-dots añadida -->
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
                 <div class="flex flex-col md:flex-row items-center gap-16">
-                    
-                    <!-- Lado Texto -->
+                    <!-- Texto -->
                     <div class="w-full md:w-1/2 order-2 md:order-1">
-                        <span class="text-wine font-bold tracking-widest uppercase text-xs mb-3 block">Gastronomía Local</span>
+                        <span class="text-wine font-bold tracking-widest uppercase text-xs mb-3 block">Gastronomía Consciente</span>
                         <h2 class="text-4xl md:text-5xl font-serif text-gray-900 mb-8">Nuestra Carta</h2>
-                        
                         <div class="space-y-8 mb-10">
-                            <div class="flex gap-4">
-                                <div class="bg-white p-3 rounded-full shadow-sm h-fit"><i data-lucide="sun" class="text-wine w-6 h-6"></i></div>
+                            <div class="flex gap-4 group">
+                                <div class="bg-white p-3 rounded-full shadow-sm h-fit group-hover:scale-110 transition"><i data-lucide="sun" class="text-wine w-6 h-6"></i></div>
                                 <div>
                                     <h4 class="font-bold text-lg text-gray-800">Desayunos Criollos</h4>
-                                    <p class="text-gray-600 text-sm">Arepas andinas, pisca, queso fresco y más.</p>
+                                    <p class="text-gray-600 text-sm">Arepas de maíz pilado, queso de páramo y pisca andina.</p>
                                 </div>
                             </div>
-                            <div class="flex gap-4">
-                                <div class="bg-white p-3 rounded-full shadow-sm h-fit"><i data-lucide="cup-soda" class="text-wine w-6 h-6"></i></div>
+                            <div class="flex gap-4 group">
+                                <div class="bg-white p-3 rounded-full shadow-sm h-fit group-hover:scale-110 transition"><i data-lucide="cup-soda" class="text-wine w-6 h-6"></i></div>
                                 <div>
-                                    <h4 class="font-bold text-lg text-gray-800">Chocolate Caliente</h4>
-                                    <p class="text-gray-600 text-sm">Espeso, artesanal y perfecto para el clima.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="bg-white p-3 rounded-full shadow-sm h-fit"><i data-lucide="cake-slice" class="text-wine w-6 h-6"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-lg text-gray-800">Repostería Casera</h4>
-                                    <p class="text-gray-600 text-sm">Tortas y dulces hechos cada mañana.</p>
+                                    <h4 class="font-bold text-lg text-gray-800">Chocolate de la Abuela</h4>
+                                    <p class="text-gray-600 text-sm">Cacao venezolano puro, espeso y especiado.</p>
                                 </div>
                             </div>
                         </div>
-
-                        <button onclick="document.getElementById('modalMenu').classList.remove('hidden')" class="btn-action btn-primary w-full md:w-auto text-center justify-center shadow-xl hover:scale-105 transition-transform">
-                            <i data-lucide="eye" class="w-5 h-5 mr-2"></i> Ver Menú Completo
+                        <button onclick="document.getElementById('modalMenu').classList.remove('hidden')" class="btn-action btn-primary w-full md:w-auto shadow-xl">
+                            <i data-lucide="eye" class="w-5 h-5 mr-2"></i> Ver Menú Digital
                         </button>
                     </div>
-                    
-                    <!-- Lado Imagen (Menú) -->
-                    <div class="w-full md:w-1/2 order-1 md:order-2 relative group cursor-zoom-in perspective-1000" onclick="document.getElementById('modalMenu').classList.remove('hidden')">
-                        <div class="relative transform transition duration-500 group-hover:rotate-1 group-hover:scale-[1.02]">
-                            <div class="absolute inset-0 bg-black/20 rounded-xl shadow-2xl transform translate-y-4 translate-x-4"></div>
-                            <img src="img/menu-cafetin.jpeg" alt="Menú Magla Café" class="relative w-full rounded-xl shadow-lg border-4 border-white object-cover">
-                            
-                            <!-- Overlay Hover -->
-                            <div class="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                                <span class="bg-white text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300 flex items-center">
-                                    <i data-lucide="maximize-2" class="w-4 h-4 mr-2"></i> Ampliar
-                                </span>
-                            </div>
+                    <!-- Imagen -->
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <div class="relative transform transition duration-500 hover:rotate-1 hover:scale-[1.01] cursor-pointer" onclick="document.getElementById('modalMenu').classList.remove('hidden')">
+                            <img src="img/menu-cafetin.jpeg" alt="Menú Magla Café" class="relative w-full rounded-xl shadow-2xl border-4 border-white object-cover">
                         </div>
                     </div>
                 </div>
@@ -136,15 +113,14 @@
         <!-- INFO & HORARIOS -->
         <section class="py-20 bg-white">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 flex flex-col md:flex-row items-center gap-12">
-                    <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
-                        <img src="img/cafetin-horizontal.png" loading="lazy" class="rounded-xl shadow-md w-full h-40 object-cover" alt="Interior">
-                        <img src="img/terraza-hotel-horizontal.png" loading="lazy" class="rounded-xl shadow-md w-full h-40 object-cover mt-8" alt="Exterior">
+                <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 flex flex-col md:flex-row items-center gap-12 shadow-inner">
+                    <div class="w-full md:w-1/2">
+                        <img src="img/cafetin-horizontal.png" class="rounded-xl shadow-md w-full h-64 object-cover" alt="Interior">
                     </div>
                     <div class="w-full md:w-1/2">
                         <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Tu lugar de encuentro</h3>
                         <p class="text-gray-600 mb-6">
-                            Ideal para trabajar con vista (tenemos WiFi), reunirte con amigos o simplemente leer un libro. No necesitas estar hospedado para visitarnos.
+                            WiFi fibra óptica disponible para que trabajes con la mejor vista.
                         </p>
                         <div class="flex items-center gap-4 text-wine font-bold bg-white p-4 rounded-lg border border-wine/10 inline-block shadow-sm">
                             <i data-lucide="clock" class="w-6 h-6"></i>
@@ -155,35 +131,18 @@
             </div>
         </section>
 
-        <!-- FOOTER UNIFICADO -->
-        <footer class="site-footer bg-gray-900 border-t-4 border-wine pt-16 pb-8 text-white">
-            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
-                <img src="img/logo.png" loading="lazy" alt="Hotel Magla" class="h-32 mb-8 opacity-90 hover:opacity-100 transition duration-300">
-                
-                <div class="flex flex-wrap justify-center gap-8 mb-10">
-                    <a href="index.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Inicio</a>
-                    <a href="habitaciones.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Habitaciones</a>
-                    <a href="reservas.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Reservar</a>
-                    <a href="maglacafe.html" class="text-gray-400 hover:text-white uppercase text-xs tracking-widest font-bold transition">Café</a>
-                </div>
-                
-                <div class="flex justify-center gap-6 mb-10">
-                    <a href="https://www.instagram.com/hotelmagla/?hl=es" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-wine transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    <a href="https://wa.me/582718811928" target="_blank" class="bg-gray-800 p-3 rounded-full text-gray-400 hover:text-white hover:bg-green-600 transition transform hover:-translate-y-1 shadow-lg"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
-                </div>
-                
-                <div class="w-full h-px bg-gray-800 mb-6 max-w-xs mx-auto"></div>
-                <p class="text-gray-600 text-xs font-light">© 2026 Hotel Magla. Todos los derechos reservados.</p>
-            </div>
+        <!-- Footer -->
+        <footer class="site-footer bg-gray-900 border-t-4 border-wine pt-16 pb-8 text-white text-center">
+            <img src="img/logo.png" class="h-24 mx-auto mb-6 opacity-80">
+            <p class="text-gray-500 text-xs">© 2026 Hotel Magla</p>
         </footer>
     </main>
 
-    <!-- LIGHTBOX MENÚ -->
-    <div id="modalMenu" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-2 md:p-8 backdrop-blur-sm cursor-zoom-out" onclick="this.classList.add('hidden')">
-        <button class="absolute top-4 right-4 text-white bg-white/20 rounded-full p-2 hover:bg-wine transition"><i data-lucide="x" class="w-8 h-8"></i></button>
-        <img src="img/menu-cafetin.jpeg" class="max-h-full max-w-full rounded shadow-2xl object-contain" alt="Carta Completa">
+    <!-- Lightbox Menú -->
+    <div id="modalMenu" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm" onclick="this.classList.add('hidden')">
+        <img src="img/menu-cafetin.jpeg" class="max-h-[90vh] rounded shadow-2xl">
     </div>
-    
+
     <script src="js/main.js"></script>
 </body>
 </html>
